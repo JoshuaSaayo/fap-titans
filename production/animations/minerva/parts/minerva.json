@@ -1,0 +1,117 @@
+{ "skeleton": { "images": "C:/Users/Joshua PC/OneDrive/Desktop/parts/" },
+"PhotoshopToSpine": { "scale": 1, "padding": 1, "trim": true },
+"bones": [
+	{ "name": "root" }
+],
+"slots": [
+	{ "name": "BG", "bone": "root", "attachment": "BG" },
+	{ "name": "l_wing", "bone": "root", "attachment": "l_wing" },
+	{ "name": "r_wing", "bone": "root", "attachment": "r_wing" },
+	{ "name": "back_hair", "bone": "root", "attachment": "back_hair" },
+	{ "name": "r_shoulder", "bone": "root", "attachment": "r_shoulder" },
+	{ "name": "r_arm", "bone": "root", "attachment": "r_arm" },
+	{ "name": "r_hand", "bone": "root", "attachment": "r_hand" },
+	{ "name": "torso", "bone": "root", "attachment": "torso" },
+	{ "name": "lower_cloth_damage", "bone": "root", "attachment": "lower_cloth_damage" },
+	{ "name": "lower_cloth", "bone": "root", "attachment": "lower_cloth" },
+	{ "name": "l_shoulder", "bone": "root", "attachment": "l_shoulder" },
+	{ "name": "l_arm", "bone": "root", "attachment": "l_arm" },
+	{ "name": "l_boob", "bone": "root", "attachment": "l_boob" },
+	{ "name": "r_boob", "bone": "root", "attachment": "r_boob" },
+	{ "name": "top_cloth_2_damage", "bone": "root", "attachment": "top_cloth_2_damage" },
+	{ "name": "top_cloth_1_damage", "bone": "root", "attachment": "top_cloth_1_damage" },
+	{ "name": "top_cloth_2", "bone": "root", "attachment": "top_cloth_2" },
+	{ "name": "top_cloth_1", "bone": "root", "attachment": "top_cloth_1" },
+	{ "name": "head", "bone": "root", "attachment": "head" },
+	{ "name": "mouth", "bone": "root", "attachment": "mouth" },
+	{ "name": "eyes", "bone": "root", "attachment": "eyes" },
+	{ "name": "r_horn", "bone": "root", "attachment": "r_horn" },
+	{ "name": "l_horn", "bone": "root", "attachment": "l_horn" },
+	{ "name": "bangs", "bone": "root", "attachment": "bangs" },
+	{ "name": "eyebrows", "bone": "root", "attachment": "eyebrows" },
+	{ "name": "Layer33", "bone": "root", "attachment": "Layer33" }
+],
+"skins": {
+	"default": {
+		"BG": {
+			"BG": { "x": 640, "y": -360, "width": 1282, "height": 722 }
+		},
+		"l_wing": {
+			"l_wing": { "x": 348, "y": -406.5, "width": 568, "height": 387 }
+		},
+		"r_wing": {
+			"r_wing": { "x": 959, "y": -478.5, "width": 560, "height": 439 }
+		},
+		"back_hair": {
+			"back_hair": { "x": 644.5, "y": -372, "width": 379, "height": 526 }
+		},
+		"r_shoulder": {
+			"r_shoulder": { "x": 727.5, "y": -448, "width": 81, "height": 200 }
+		},
+		"r_arm": {
+			"r_arm": { "x": 775, "y": -488.5, "width": 72, "height": 107 }
+		},
+		"r_hand": {
+			"r_hand": { "x": 830.5, "y": -417.5, "width": 257, "height": 381 }
+		},
+		"torso": {
+			"torso": { "x": 593.5, "y": -508, "width": 351, "height": 426 }
+		},
+		"lower_cloth_damage": {
+			"lower_cloth_damage": { "x": 556.5, "y": -629, "width": 323, "height": 184 }
+		},
+		"lower_cloth": {
+			"lower_cloth": { "x": 556.5, "y": -629, "width": 323, "height": 184 }
+		},
+		"l_shoulder": {
+			"l_shoulder": { "x": 516, "y": -366, "width": 168, "height": 94 }
+		},
+		"l_arm": {
+			"l_arm": { "x": 454, "y": -281.5, "width": 156, "height": 285 }
+		},
+		"l_boob": {
+			"l_boob": { "x": 632, "y": -476, "width": 284, "height": 300 }
+		},
+		"r_boob": {
+			"r_boob": { "x": 692, "y": -465, "width": 146, "height": 152 }
+		},
+		"top_cloth_2_damage": {
+			"top_cloth_2_damage": { "x": 646.5, "y": -465.5, "width": 205, "height": 153 }
+		},
+		"top_cloth_1_damage": {
+			"top_cloth_1_damage": { "x": 646, "y": -420.5, "width": 296, "height": 215 }
+		},
+		"top_cloth_2": {
+			"top_cloth_2": { "x": 646.5, "y": -465.5, "width": 205, "height": 153 }
+		},
+		"top_cloth_1": {
+			"top_cloth_1": { "x": 646, "y": -420.5, "width": 296, "height": 215 }
+		},
+		"head": {
+			"head": { "x": 643.5, "y": -242, "width": 199, "height": 190 }
+		},
+		"mouth": {
+			"mouth": { "x": 641, "y": -305.5, "width": 88, "height": 37 }
+		},
+		"eyes": {
+			"eyes": { "x": 642, "y": -262, "width": 128, "height": 44 }
+		},
+		"r_horn": {
+			"r_horn": { "x": 716, "y": -120.5, "width": 86, "height": 119 }
+		},
+		"l_horn": {
+			"l_horn": { "x": 559, "y": -111, "width": 78, "height": 146 }
+		},
+		"bangs": {
+			"bangs": { "x": 634.5, "y": -263.5, "width": 255, "height": 281 }
+		},
+		"eyebrows": {
+			"eyebrows": { "x": 643.5, "y": -229.5, "width": 143, "height": 13 }
+		},
+		"Layer33": {
+			"Layer33": { "x": 0.5, "y": -0.5, "width": 3, "height": 3 }
+		}
+	}
+},
+"animations": { "animation": {} }
+}
