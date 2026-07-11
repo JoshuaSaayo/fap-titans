@@ -11,5 +11,18 @@ config_version=5
 [application]
 
 config/name="Fap Titans"
+run/main_scene="uid://bksi846xp8iep"
 config/features=PackedStringArray("4.5", "Forward Plus")
 config/icon="res://icon.svg"
+
+[autoload]
+
+JudgmentManager="*res://autoload/judgment_manager.gd"
+RhythmManager="*res://autoload/rhythm_manager.gd"
+PlayerManager="*res://autoload/player_manager.gd"
+MonsterManager="*res://autoload/monster_manager.gd"
+
+[display]
+
+window/size/viewport_width=1280
+window/size/viewport_height=720

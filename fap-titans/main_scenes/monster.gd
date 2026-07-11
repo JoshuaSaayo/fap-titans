@@ -4,7 +4,7 @@ extends Node2D
 var current_hp: float = 1000.0
 
 @onready var hp_bar = $ProgressBar
-@onready var sprite = $Sprite2D
+@onready var monster: Sprite2D = $monster
 
 enum Phase { FULL, HALF, LOW }
 var current_phase = Phase.FULL
@@ -12,6 +12,7 @@ var current_phase = Phase.FULL
 func _ready():
 	hp_bar.max_value = max_hp
 	update_hp(0)
+	MonsterManager.register_monster(self)
 
 func take_damage(amount: float):
 	current_hp = clamp(current_hp - amount, 0, max_hp)

@@ -1,9 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://81bu0rcynjp"]
 
-[ext_resource type="Script" uid="uid://dq0gll1aabius" path="res://characters/monster.gd" id="1_r8mnh"]
-
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_r8mnh"]
-load_path = "res://.godot/imported/minerva.jpg-a149bbb25b06823f622c1967880474ed.ctex"
+[ext_resource type="Script" uid="uid://dq0gll1aabius" path="res://main_scenes/monster.gd" id="1_r8mnh"]
+[ext_resource type="Texture2D" uid="uid://bpq3baa7tt8w6" path="res://assets/monster/minerva/minerva_form1.jpg" id="2_7qafs"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bjm3i"]
 
@@ -14,14 +12,14 @@ bg_color = Color(0.6, 0, 0.6, 1)
 script = ExtResource("1_r8mnh")
 
 [node name="monster" type="Sprite2D" parent="."]
-position = Vector2(0, -208)
-texture = SubResource("CompressedTexture2D_r8mnh")
+position = Vector2(0, -206)
+texture = ExtResource("2_7qafs")
 
 [node name="ProgressBar" type="ProgressBar" parent="."]
 offset_left = -122.0
-offset_top = -472.0
+offset_top = -475.0
 offset_right = 121.0
-offset_bottom = -445.0
+offset_bottom = -448.0
 theme_override_styles/background = SubResource("StyleBoxFlat_bjm3i")
 theme_override_styles/fill = SubResource("StyleBoxFlat_jlo68")
 value = 50.0

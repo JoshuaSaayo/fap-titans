@@ -1,3 +1,32 @@
-[gd_scene format=3 uid="uid://bksi846xp8iep"]
+[gd_scene load_steps=6 format=3 uid="uid://bksi846xp8iep"]
+
+[ext_resource type="PackedScene" uid="uid://81bu0rcynjp" path="res://main_scenes/monster.tscn" id="1_5wi6k"]
+[ext_resource type="Script" uid="uid://o03qqeuo1pj" path="res://main_scenes/main.gd" id="1_xxyhp"]
+[ext_resource type="PackedScene" uid="uid://dj2utacqq6dp7" path="res://main_scenes/player.tscn" id="2_8e5s8"]
+[ext_resource type="Texture2D" uid="uid://b5577bi2srl63" path="res://assets/main_backgrond.jpg" id="3_8e5s8"]
+[ext_resource type="PackedScene" uid="uid://d217pypt8oiqc" path="res://main_scenes/hit_line.tscn" id="4_i0cl8"]
 
 [node name="main" type="Node2D"]
+script = ExtResource("1_xxyhp")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+offset_right = 1280.0
+offset_bottom = 720.0
+texture = ExtResource("3_8e5s8")
+
+[node name="monster" parent="." instance=ExtResource("1_5wi6k")]
+position = Vector2(740, 724)
+
+[node name="player" parent="." instance=ExtResource("2_8e5s8")]
+position = Vector2(740, 724)
+
+[node name="hit_line" parent="." instance=ExtResource("4_i0cl8")]
+position = Vector2(737, 143)
+
+[node name="UI" type="CanvasLayer" parent="."]
+
+[node name="Label" type="Label" parent="UI"]
+offset_left = 1226.0
+offset_right = 1282.0
+offset_bottom = 23.0
+text = "SCORE:"
