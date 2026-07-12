@@ -19,11 +19,20 @@ func _process(delta):
 func spawn_note():
 	var note = preload("res://main_scenes/note.tscn").instantiate()
 	
-	# Spawn at fixed horizontal positions (Cytus style)
-	var lanes = [400, 640, 880]   # 3 lanes for now
-	var random_lane = lanes[randi() % lanes.size()]
+	# === Random spawn inside a defined rectangle ===
+	var spawn_area_width = 600     # How wide the spawn zone is
+	var spawn_area_height = 80     # How tall (usually small)
 	
-	note.position = Vector2(random_lane, 300)   # Middle of screen vertically
+	# Center point of spawn area (adjust these numbers to your liking)
+	var center_x = 640
+	var center_y = 280             # Higher = more towards top of screen
+	
+	# Random position inside the area
+	var random_x = center_x + randf_range(-spawn_area_width/2, spawn_area_width/2)
+	var random_y = center_y + randf_range(-spawn_area_height/2, spawn_area_height/2)
+	
+	note.position = Vector2(random_x, random_y)
+	
 	get_tree().current_scene.add_child(note)
 
 func register_hit(accuracy: String = "perfect"):

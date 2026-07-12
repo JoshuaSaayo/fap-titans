@@ -1,30 +1,60 @@
-[gd_scene load_steps=5 format=3 uid="uid://dj2utacqq6dp7"]
+[gd_scene load_steps=8 format=3 uid="uid://dj2utacqq6dp7"]
 
 [ext_resource type="Script" uid="uid://k0ugdctc2fts" path="res://main_scenes/player.gd" id="1_apw8i"]
-[ext_resource type="Texture2D" uid="uid://df3ark7rtkfl7" path="res://assets/knight.png" id="1_m66g2"]
+[ext_resource type="Texture2D" uid="uid://bucltppufbg7w" path="res://assets/knight/knight_1.png" id="2_apw8i"]
+[ext_resource type="FontFile" uid="uid://d2564b14oyd1a" path="res://UI/fonts/IMFellEnglish-Regular.ttf" id="3_pgebr"]
+[ext_resource type="Texture2D" uid="uid://djfndihv4i30d" path="res://assets/knight/knight_2.png" id="3_y50g6"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pgebr"]
+[sub_resource type="SpriteFrames" id="SpriteFrames_18st5"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_apw8i")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_y50g6")
+}],
+"loop": true,
+"name": &"default",
+"speed": 1.0
+}]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_y50g6"]
-bg_color = Color(0, 0.5388457, 0.2401495, 1)
+bg_color = Color(1, 1, 1, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_18st5"]
+bg_color = Color(0, 1, 0, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0, 0, 0, 1)
 
 [node name="player" type="Node2D"]
 script = ExtResource("1_apw8i")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(0, -135)
-scale = Vector2(0.60108787, 0.60108787)
-texture = ExtResource("1_m66g2")
-
-[node name="ProgressBar" type="ProgressBar" parent="."]
-offset_left = -122.0
-offset_top = -326.0
-offset_right = 121.0
-offset_bottom = -299.0
-theme_override_styles/background = SubResource("StyleBoxFlat_pgebr")
-theme_override_styles/fill = SubResource("StyleBoxFlat_y50g6")
-value = 50.0
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_18st5")
+autoplay = "default"
+frame_progress = 0.7170722
 
 [node name="Label" type="Label" parent="."]
 offset_right = 40.0
 offset_bottom = 23.0
+
+[node name="ProgressBar" type="ProgressBar" parent="."]
+offset_left = -90.0
+offset_top = 33.0
+offset_right = 88.0
+offset_bottom = 68.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_pgebr")
+theme_override_font_sizes/font_size = 25
+theme_override_styles/background = SubResource("StyleBoxFlat_y50g6")
+theme_override_styles/fill = SubResource("StyleBoxFlat_18st5")
+value = 50.0

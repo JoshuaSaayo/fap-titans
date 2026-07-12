@@ -4,7 +4,7 @@ extends Node2D
 var current_hp: float = 100.0
 
 @onready var hp_bar = $ProgressBar
-@onready var sprite = $Sprite2D
+@onready var sprite: AnimatedSprite2D = $AnimatedSprite2D
 
 var combo: int = 0
 @onready var combo_label = $ComboLabel if has_node("ComboLabel") else null

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://x4xb5cd0icww"
-path="res://.godot/imported/minerva_form3.jpg-3ab188a862a470742e777e05f63e7f01.ctex"
+uid="uid://bhkhijtmicbce"
+path="res://.godot/imported/main_foregrond.png-9fc51e8b62503d6ba14fd11fc809927a.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/monster/minerva/minerva_form3.jpg"
-dest_files=["res://.godot/imported/minerva_form3.jpg-3ab188a862a470742e777e05f63e7f01.ctex"]
+source_file="res://assets/main_foregrond.png"
+dest_files=["res://.godot/imported/main_foregrond.png-9fc51e8b62503d6ba14fd11fc809927a.ctex"]
 
 [params]
 
