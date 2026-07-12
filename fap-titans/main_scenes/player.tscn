@@ -1,9 +1,11 @@
-[gd_scene load_steps=8 format=3 uid="uid://dj2utacqq6dp7"]
+[gd_scene load_steps=11 format=3 uid="uid://dj2utacqq6dp7"]
 
 [ext_resource type="Script" uid="uid://k0ugdctc2fts" path="res://main_scenes/player.gd" id="1_apw8i"]
 [ext_resource type="Texture2D" uid="uid://bucltppufbg7w" path="res://assets/knight/knight_1.png" id="2_apw8i"]
 [ext_resource type="FontFile" uid="uid://d2564b14oyd1a" path="res://UI/fonts/IMFellEnglish-Regular.ttf" id="3_pgebr"]
 [ext_resource type="Texture2D" uid="uid://djfndihv4i30d" path="res://assets/knight/knight_2.png" id="3_y50g6"]
+[ext_resource type="Texture2D" uid="uid://ckyfnwf2k2rwo" path="res://assets/knight/knight_3.png" id="4_07ovw"]
+[ext_resource type="Texture2D" uid="uid://djwk5jpr30pxq" path="res://assets/knight/knight_4.png" id="5_dgrxa"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_18st5"]
 animations = [{
@@ -15,12 +17,31 @@ animations = [{
 "texture": ExtResource("3_y50g6")
 }],
 "loop": true,
-"name": &"default",
+"name": &"idle",
 "speed": 1.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_apw8i")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_07ovw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_dgrxa")
+}],
+"loop": false,
+"name": &"slash",
+"speed": 5.0
 }]
 
+[sub_resource type="LabelSettings" id="LabelSettings_07ovw"]
+font = ExtResource("3_pgebr")
+font_size = 30
+font_color = Color(0, 0, 0, 1)
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_y50g6"]
-bg_color = Color(1, 1, 1, 1)
+bg_color = Color(1, 1, 1, 0)
 border_width_left = 1
 border_width_top = 1
 border_width_right = 1
@@ -28,7 +49,7 @@ border_width_bottom = 1
 border_color = Color(0, 0, 0, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_18st5"]
-bg_color = Color(0, 1, 0, 1)
+bg_color = Color(0, 1, 1, 1)
 border_width_left = 1
 border_width_top = 1
 border_width_right = 1
@@ -40,12 +61,16 @@ script = ExtResource("1_apw8i")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_18st5")
-autoplay = "default"
-frame_progress = 0.7170722
+animation = &"idle"
+autoplay = "idle"
 
-[node name="Label" type="Label" parent="."]
-offset_right = 40.0
-offset_bottom = 23.0
+[node name="ComboLabel" type="Label" parent="."]
+offset_left = -485.0
+offset_top = 193.0
+offset_right = -366.0
+offset_bottom = 232.0
+text = "COMBO"
+label_settings = SubResource("LabelSettings_07ovw")
 
 [node name="ProgressBar" type="ProgressBar" parent="."]
 offset_left = -90.0

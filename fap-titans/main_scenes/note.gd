@@ -55,5 +55,24 @@ func _input_event(viewport, event, shape_idx):
 func hit_success():
 	if not is_hit:
 		is_hit = true
+		
+		spawn_hit_effect()
+		
+		# === Trigger Combo & Slash ===
+		if PlayerManager.player:
+			PlayerManager.player.add_combo()           # ← Add this
+			PlayerManager.player.play_slash_animation() # ← Already had this
+		
 		JudgmentManager.judge_stationary_note(self, self.time_left)
 		queue_free()
+
+func spawn_hit_effect():
+	var effect_scene = preload("res://main_scenes/hit_effect.tscn")
+	var effect = effect_scene.instantiate()
+	effect.position = self.global_position
+	effect.emitting = true
+	get_tree().current_scene.add_child(effect)
+	
+	# Auto free after lifetime
+	await get_tree().create_timer(1.0).timeout
+	effect.queue_free()

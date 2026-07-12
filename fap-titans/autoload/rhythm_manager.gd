@@ -45,7 +45,6 @@ func register_hit(accuracy: String = "perfect"):
 	damage *= PlayerManager.get_combo_multiplier()
 	
 	MonsterManager.take_damage(damage)
-	PlayerManager.add_combo()
 	
 	emit_signal("note_hit", accuracy)
 

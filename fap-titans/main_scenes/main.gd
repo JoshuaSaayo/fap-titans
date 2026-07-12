@@ -2,7 +2,6 @@ extends Node2D
 
 @onready var monster: Node2D = $monster
 @onready var player: Node2D = $player
-@onready var hit_line: Area2D = $hit_line
 
 func _ready():
 	# Extra safety registration

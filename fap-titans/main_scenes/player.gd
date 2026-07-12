@@ -4,10 +4,10 @@ extends Node2D
 var current_hp: float = 100.0
 
 @onready var hp_bar = $ProgressBar
-@onready var sprite: AnimatedSprite2D = $AnimatedSprite2D
+@onready var anim: AnimatedSprite2D = $AnimatedSprite2D
 
 var combo: int = 0
-@onready var combo_label = $ComboLabel if has_node("ComboLabel") else null
+@onready var combo_label = $ComboLabel
 
 signal player_died
 signal combo_updated(new_combo)
@@ -17,15 +17,18 @@ func _ready():
 	update_hp_ui()
 	reset_combo()
 	PlayerManager.register_player(self)
+	if anim:
+		anim.play("idle")               # Start with idle
+
 
 func take_damage(amount: float):
 	current_hp = clamp(current_hp - amount, 0, max_hp)
 	update_hp_ui()
 	
 	# Visual feedback
-	sprite.modulate = Color.RED
+	anim.modulate = Color.RED
 	await get_tree().create_timer(0.15).timeout
-	sprite.modulate = Color.WHITE
+	anim.modulate = Color.WHITE
 	
 	if current_hp <= 0:
 		emit_signal("player_died")
@@ -41,18 +44,30 @@ func update_hp_ui():
 # Combo System
 func add_combo():
 	combo += 1
-	if combo_label:
-		combo_label.text = "COMBO x" + str(combo)
-		combo_label.scale = Vector2(1.3, 1.3)
-		var tween = create_tween()
-		tween.tween_property(combo_label, "scale", Vector2(1,1), 0.3)
+	update_combo_ui()
 	emit_signal("combo_updated", combo)
 
 func reset_combo():
 	combo = 0
-	if combo_label:
-		combo_label.text = ""
+	update_combo_ui()
 	emit_signal("combo_updated", 0)
+
+func update_combo_ui():
+	if combo_label:
+		if combo >= 3:                          # Show only after some hits
+			combo_label.text = "COMBO ×" + str(combo)
+			combo_label.visible = true
+		else:
+			combo_label.visible = false
 
 func get_combo_multiplier() -> float:
 	return 1.0 + (combo * 0.05)  # +5% damage per combo
+
+func play_slash_animation():
+	if anim:
+		anim.play("slash")
+		
+		# Return to idle after slash animation finishes
+		await anim.animation_finished
+		if anim.animation == "slash":
+			anim.play("idle")
