@@ -10,6 +10,8 @@ func _ready():
 	if not MonsterManager.monster:
 		MonsterManager.register_monster(monster)
 	
+	RhythmManager.start_spawning()
+	
 	print("Rhythm Prototype Started!")
 	
 	# Optional: Start music

@@ -3,6 +3,7 @@ extends Node
 @export var bpm: float = 120.0
 var beat_interval: float = 0.0
 var time_since_last_beat: float = 0.0
+var is_spawning: bool = false;
 
 signal note_hit(accuracy: String)
 signal note_missed
@@ -11,10 +12,16 @@ func _ready():
 	beat_interval = 60.0 / bpm
 
 func _process(delta):
+	if !is_spawning:
+		return
+	
 	time_since_last_beat += delta
 	if time_since_last_beat >= beat_interval:
 		spawn_note()
 		time_since_last_beat -= beat_interval
+
+func start_spawning():
+	is_spawning = true;
 
 func spawn_note():
 	var note = preload("res://main_scenes/note.tscn").instantiate()
