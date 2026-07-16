@@ -1,0 +1,14 @@
+[remap]
+
+importer="spine.skel"
+type="SpineSkeletonFileResource"
+uid="uid://c4n0tjkvggshx"
+path="res://.godot/imported/minerva.skel-efe7110aab4b78143822b2ab44250232.spskel"
+
+[deps]
+
+source_file="res://animations/assets/minerva/minerva.skel"
+dest_files=["res://.godot/imported/minerva.skel-efe7110aab4b78143822b2ab44250232.spskel"]
+
+[params]
+

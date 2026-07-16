@@ -1,0 +1,8 @@
+[gd_resource type="SpineSkeletonDataResource" load_steps=3 format=3 uid="uid://bumidjyegy7b2"]
+
+[ext_resource type="SpineAtlasResource" uid="uid://h4cc02q6uf34" path="res://animations/assets/minerva_ls/minerva_ls.atlas" id="1_l87kq"]
+[ext_resource type="SpineSkeletonFileResource" uid="uid://cv41pdud1d7m4" path="res://animations/assets/minerva_ls/minerva_ls.skel" id="2_b76dd"]
+
+[resource]
+atlas_res = ExtResource("1_l87kq")
+skeleton_file_res = ExtResource("2_b76dd")
