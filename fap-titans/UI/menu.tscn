@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=3 uid="uid://cbgkrnpa2ypg8"]
+[gd_scene load_steps=51 format=3 uid="uid://cbgkrnpa2ypg8"]
 
 [ext_resource type="Texture2D" uid="uid://fdatsuj7mpp7" path="res://UI/assets/main_menu.png" id="1_4hkxj"]
 [ext_resource type="Texture2D" uid="uid://bjqqfe1oc3lav" path="res://UI/assets/start_hover.png" id="2_qmqfe"]
@@ -11,6 +11,11 @@
 [ext_resource type="Texture2D" uid="uid://ccxl3er420ukb" path="res://UI/assets/credits_btn_hover.png" id="6_re817"]
 [ext_resource type="Texture2D" uid="uid://bhtvolef87t30" path="res://UI/assets/logo.png" id="9_cvc1e"]
 [ext_resource type="FontFile" uid="uid://d2564b14oyd1a" path="res://UI/fonts/IMFellEnglish-Regular.ttf" id="10_re817"]
+[ext_resource type="Texture2D" uid="uid://c5d6u8pjbbrg6" path="res://UI/assets/settings_box.png" id="12_vso1l"]
+[ext_resource type="FontFile" uid="uid://ddcbng6448vj6" path="res://UI/fonts/Almendra-Bold.ttf" id="13_22gd7"]
+[ext_resource type="Texture2D" uid="uid://djlgmowgoog5f" path="res://UI/assets/checked.png" id="14_60j7a"]
+[ext_resource type="Texture2D" uid="uid://qeoqk62sxe1i" path="res://UI/assets/unchecked.png" id="15_k0tp0"]
+[ext_resource type="Texture2D" uid="uid://covd3y601a0ta" path="res://UI/assets/grabber.png" id="16_emkvv"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_1qvof"]
 texture = ExtResource("3_e05sn")
@@ -76,6 +81,54 @@ texture = ExtResource("5_dhncy")
 font = ExtResource("10_re817")
 font_size = 30
 font_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_3lojv"]
+texture = ExtResource("12_vso1l")
+
+[sub_resource type="LabelSettings" id="LabelSettings_60j7a"]
+font = ExtResource("13_22gd7")
+font_size = 60
+font_color = Color(0.9098039, 0.7764706, 0.4392157, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_xbecv"]
+font = ExtResource("10_re817")
+font_size = 40
+font_color = Color(0.9098039, 0.7764706, 0.4392157, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_emkvv"]
+font = ExtResource("10_re817")
+font_size = 30
+font_color = Color(0.9098039, 0.7764706, 0.4392157, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_qclgv"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_wh1w0"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_6m7h8"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_lkn22"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_xafrf"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_6e708"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_k0tp0"]
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xbecv"]
+bg_color = Color(0.9098039, 0.7764706, 0.4392157, 1)
+corner_radius_top_left = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_emkvv"]
+bg_color = Color(0.9098039, 0.7764706, 0.4392157, 1)
+border_width_left = 5
+border_width_bottom = 5
 
 [node name="Menu" type="Control"]
 layout_mode = 3
@@ -164,3 +217,164 @@ offset_right = 1261.0
 offset_bottom = 59.0
 text = "v1.0 demo"
 label_settings = SubResource("LabelSettings_1qvof")
+
+[node name="Settings" type="Control" parent="."]
+anchors_preset = 0
+offset_left = 69.0
+offset_top = 25.0
+offset_right = 109.0
+offset_bottom = 65.0
+
+[node name="SettingsPanel" type="Panel" parent="Settings"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -20.0
+offset_right = 1122.0
+offset_bottom = 604.0
+grow_horizontal = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_3lojv")
+
+[node name="AudioLabel" type="Label" parent="Settings/SettingsPanel"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -91.0
+offset_top = 18.0
+offset_right = 92.0
+offset_bottom = 97.0
+grow_horizontal = 2
+text = "AUDIO"
+label_settings = SubResource("LabelSettings_60j7a")
+
+[node name="FullscreenMode" type="Label" parent="Settings/SettingsPanel"]
+layout_mode = 0
+offset_left = 70.0
+offset_top = 118.0
+offset_right = 349.0
+offset_bottom = 170.0
+text = "Fullscreen Mode"
+label_settings = SubResource("LabelSettings_xbecv")
+
+[node name="Fullscreen" type="Label" parent="Settings/SettingsPanel"]
+layout_mode = 0
+offset_left = 74.0
+offset_top = 180.0
+offset_right = 203.0
+offset_bottom = 219.0
+text = "Fullscreen"
+label_settings = SubResource("LabelSettings_emkvv")
+
+[node name="FullscreenCheck" type="CheckBox" parent="Settings/SettingsPanel/Fullscreen"]
+layout_mode = 0
+offset_left = 143.0
+offset_top = -4.0
+offset_right = 191.0
+offset_bottom = 44.0
+theme_override_styles/normal = SubResource("StyleBoxTexture_qclgv")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_wh1w0")
+theme_override_styles/hover = SubResource("StyleBoxTexture_6m7h8")
+theme_override_styles/hover_pressed = SubResource("StyleBoxTexture_lkn22")
+theme_override_styles/disabled = SubResource("StyleBoxTexture_xafrf")
+theme_override_styles/focus = SubResource("StyleBoxTexture_6e708")
+theme_override_icons/checked = ExtResource("14_60j7a")
+theme_override_icons/unchecked = ExtResource("15_k0tp0")
+theme_override_icons/radio_checked = ExtResource("14_60j7a")
+theme_override_icons/radio_unchecked = ExtResource("15_k0tp0")
+theme_override_icons/checked_disabled = ExtResource("14_60j7a")
+theme_override_icons/unchecked_disabled = ExtResource("15_k0tp0")
+theme_override_icons/radio_checked_disabled = ExtResource("14_60j7a")
+theme_override_icons/radio_unchecked_disabled = ExtResource("15_k0tp0")
+
+[node name="Borderless" type="Label" parent="Settings/SettingsPanel"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -65.0
+offset_top = 181.0
+offset_right = 66.0
+offset_bottom = 220.0
+grow_horizontal = 2
+text = "Borderless"
+label_settings = SubResource("LabelSettings_emkvv")
+
+[node name="BorderlessCheck" type="CheckBox" parent="Settings/SettingsPanel/Borderless"]
+layout_mode = 0
+offset_left = 143.0
+offset_top = -4.0
+offset_right = 191.0
+offset_bottom = 44.0
+theme_override_styles/normal = SubResource("StyleBoxTexture_qclgv")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_wh1w0")
+theme_override_styles/hover = SubResource("StyleBoxTexture_6m7h8")
+theme_override_styles/hover_pressed = SubResource("StyleBoxTexture_lkn22")
+theme_override_styles/disabled = SubResource("StyleBoxTexture_xafrf")
+theme_override_styles/focus = SubResource("StyleBoxTexture_6e708")
+theme_override_icons/checked = ExtResource("14_60j7a")
+theme_override_icons/unchecked = ExtResource("15_k0tp0")
+theme_override_icons/radio_checked = ExtResource("14_60j7a")
+theme_override_icons/radio_unchecked = ExtResource("15_k0tp0")
+theme_override_icons/checked_disabled = ExtResource("14_60j7a")
+theme_override_icons/unchecked_disabled = ExtResource("15_k0tp0")
+theme_override_icons/radio_checked_disabled = ExtResource("14_60j7a")
+theme_override_icons/radio_unchecked_disabled = ExtResource("15_k0tp0")
+
+[node name="Windowed" type="Label" parent="Settings/SettingsPanel"]
+layout_mode = 0
+offset_left = 882.0
+offset_top = 180.0
+offset_right = 1016.0
+offset_bottom = 219.0
+text = "Windowed"
+label_settings = SubResource("LabelSettings_emkvv")
+
+[node name="WindowedCheck" type="CheckBox" parent="Settings/SettingsPanel/Windowed"]
+layout_mode = 0
+offset_left = 143.0
+offset_top = -4.0
+offset_right = 191.0
+offset_bottom = 44.0
+theme_override_styles/normal = SubResource("StyleBoxTexture_qclgv")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_wh1w0")
+theme_override_styles/hover = SubResource("StyleBoxTexture_6m7h8")
+theme_override_styles/hover_pressed = SubResource("StyleBoxTexture_lkn22")
+theme_override_styles/disabled = SubResource("StyleBoxTexture_xafrf")
+theme_override_styles/focus = SubResource("StyleBoxTexture_6e708")
+theme_override_icons/checked = ExtResource("14_60j7a")
+theme_override_icons/unchecked = ExtResource("15_k0tp0")
+theme_override_icons/radio_checked = ExtResource("14_60j7a")
+theme_override_icons/radio_unchecked = ExtResource("15_k0tp0")
+theme_override_icons/checked_disabled = ExtResource("14_60j7a")
+theme_override_icons/unchecked_disabled = ExtResource("15_k0tp0")
+theme_override_icons/radio_checked_disabled = ExtResource("14_60j7a")
+theme_override_icons/radio_unchecked_disabled = ExtResource("15_k0tp0")
+
+[node name="Brightness" type="Label" parent="Settings/SettingsPanel"]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 75.0
+offset_top = -50.0
+offset_right = 251.0
+offset_bottom = 2.0
+grow_vertical = 2
+text = "Brightness"
+label_settings = SubResource("LabelSettings_xbecv")
+
+[node name="BrightnessSlider" type="HSlider" parent="Settings/SettingsPanel/Brightness"]
+layout_mode = 0
+offset_left = 344.0
+offset_top = 2.0
+offset_right = 994.0
+offset_bottom = 39.0
+theme_override_icons/grabber = ExtResource("16_emkvv")
+theme_override_icons/grabber_highlight = ExtResource("16_emkvv")
+theme_override_icons/grabber_disabled = ExtResource("16_emkvv")
+theme_override_icons/tick = ExtResource("16_emkvv")
+theme_override_styles/slider = SubResource("StyleBoxFlat_k0tp0")
+theme_override_styles/grabber_area = SubResource("StyleBoxFlat_xbecv")
+theme_override_styles/grabber_area_highlight = SubResource("StyleBoxFlat_emkvv")
