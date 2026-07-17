@@ -1,0 +1,230 @@
+[gd_scene load_steps=5 format=3 uid="uid://b6giq5qvbo87b"]
+
+[ext_resource type="Script" uid="uid://t5fdgjiesho3" path="res://UI/toys.gd" id="1_bddyp"]
+[ext_resource type="Texture2D" uid="uid://c04aktf1pn2tl" path="res://UI/assets/menu_bg.png" id="1_fptxl"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fptxl"]
+content_margin_left = 16.0
+content_margin_top = 16.0
+content_margin_right = 16.0
+content_margin_bottom = 16.0
+bg_color = Color(0, 0, 0, 0.38039216)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bddyp"]
+content_margin_left = 8.0
+content_margin_top = 8.0
+content_margin_right = 8.0
+content_margin_bottom = 8.0
+bg_color = Color(0, 0, 0, 0.38039216)
+
+[node name="Toys" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_bddyp")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_fptxl")
+expand_mode = 1
+stretch_mode = 6
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 16.0
+offset_top = 16.0
+offset_right = -16.0
+offset_bottom = -16.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 20
+
+[node name="Label" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 30
+text = "Toys"
+
+[node name="PanelContainer" type="PanelContainer" parent="VBoxContainer"]
+custom_minimum_size = Vector2(640, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_styles/panel = SubResource("StyleBoxFlat_fptxl")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/PanelContainer"]
+layout_mode = 2
+theme_override_constants/separation = 16
+
+[node name="Label" type="Label" parent="VBoxContainer/PanelContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 30
+text = "Buttplug.io server"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/PanelContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 16
+
+[node name="Label" type="Label" parent="VBoxContainer/PanelContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 25
+text = "Host"
+horizontal_alignment = 2
+
+[node name="HostLineEdit" type="LineEdit" parent="VBoxContainer/PanelContainer/VBoxContainer/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+theme_override_font_sizes/font_size = 25
+text = "127.0.0.1"
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="VBoxContainer/PanelContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 16
+
+[node name="Label" type="Label" parent="VBoxContainer/PanelContainer/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 25
+text = "Port"
+horizontal_alignment = 2
+
+[node name="PortLineEdit" type="LineEdit" parent="VBoxContainer/PanelContainer/VBoxContainer/HBoxContainer2"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+theme_override_font_sizes/font_size = 25
+text = "12345"
+
+[node name="ConnectButton" type="Button" parent="VBoxContainer/PanelContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 25
+text = "Connect"
+
+[node name="ServerPanel" type="PanelContainer" parent="VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_bddyp")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/ServerPanel"]
+layout_mode = 2
+
+[node name="ServerNameLabel" type="Label" parent="VBoxContainer/ServerPanel/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 30
+text = "Server name"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/ServerPanel/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/separation = 16
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/ServerPanel/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Label" type="Label" parent="VBoxContainer/ServerPanel/VBoxContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Available devices"
+
+[node name="AvailableDevicesList" type="ItemList" parent="VBoxContainer/ServerPanel/VBoxContainer/HBoxContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Button3" type="Button" parent="VBoxContainer/ServerPanel/VBoxContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+text = "Link selected device"
+
+[node name="Button" type="Button" parent="VBoxContainer/ServerPanel/VBoxContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+disabled = true
+text = "Request device list"
+
+[node name="Button2" type="Button" parent="VBoxContainer/ServerPanel/VBoxContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+disabled = true
+text = "Re-scan devices"
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="VBoxContainer/ServerPanel/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Label" type="Label" parent="VBoxContainer/ServerPanel/VBoxContainer/HBoxContainer/VBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Linked devices (used by the game)"
+
+[node name="LinkedDevicesList" type="ItemList" parent="VBoxContainer/ServerPanel/VBoxContainer/HBoxContainer/VBoxContainer2"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Button" type="Button" parent="VBoxContainer/ServerPanel/VBoxContainer/HBoxContainer/VBoxContainer2"]
+layout_mode = 2
+text = "Unlink selected device"
+
+[node name="Button2" type="Button" parent="VBoxContainer/ServerPanel/VBoxContainer/HBoxContainer/VBoxContainer2"]
+layout_mode = 2
+text = "Test selected device"
+
+[node name="Button3" type="Button" parent="VBoxContainer/ServerPanel/VBoxContainer/HBoxContainer/VBoxContainer2"]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 2
+focus_mode = 0
+disabled = true
+text = " "
+
+[node name="LoadingOverlay" type="ColorRect" parent="."]
+unique_name_in_owner = true
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.60784316)
+
+[node name="LoadingOverlayLabel" type="Label" parent="LoadingOverlay"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -57.5
+offset_top = -21.0
+offset_right = 57.5
+offset_bottom = 21.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 30
+text = "Working..."
+
+[connection signal="pressed" from="VBoxContainer/PanelContainer/VBoxContainer/ConnectButton" to="." method="on_connect_press"]
+[connection signal="pressed" from="VBoxContainer/ServerPanel/VBoxContainer/HBoxContainer/VBoxContainer/Button3" to="." method="on_link_press"]
+[connection signal="pressed" from="VBoxContainer/ServerPanel/VBoxContainer/HBoxContainer/VBoxContainer2/Button" to="." method="on_unlink_press"]
+[connection signal="pressed" from="VBoxContainer/ServerPanel/VBoxContainer/HBoxContainer/VBoxContainer2/Button2" to="." method="on_test_press"]

@@ -1,0 +1,113 @@
+extends Control
+
+@onready var loading_overlay = %LoadingOverlay
+@onready var loading_overlay_label = %LoadingOverlayLabel
+@onready var host_line_edit = %HostLineEdit
+@onready var port_line_edit = %PortLineEdit
+@onready var connect_button = %ConnectButton
+@onready var server_panel = %ServerPanel
+@onready var server_name_label = %ServerNameLabel
+@onready var available_devices_list = %AvailableDevicesList
+@onready var linked_devices_list = %LinkedDevicesList
+
+var disposeBag: ToysManager.DisposeBag
+var isConnecting: bool = false
+var isRequestingDeviceList: bool = false
+var isTesting: bool = false
+
+func _ready():
+	disposeBag = ToysManager.DisposeBag.new()
+	
+	ToysManager.isConnecting.listen(
+		func (isToyManagerConnecting: bool):
+			isConnecting = isToyManagerConnecting
+			update_loading_overlay()
+	).addTo(disposeBag)
+
+	ToysManager.isRequestingDeviceList.listen(
+		func (isToyManagerRequestingDeviceList: bool):
+			isRequestingDeviceList = isToyManagerRequestingDeviceList
+			update_loading_overlay()
+	).addTo(disposeBag)
+
+	ToysManager.isTesting.listen(
+		func (isToyManagerTesting: bool):
+			isTesting = isToyManagerTesting
+			update_loading_overlay()
+	).addTo(disposeBag)
+	
+	ToysManager.connectedServer.listen(
+		func (connectedServer: ToysManager.ServerInfo):
+			if (connectedServer == null):
+				server_panel.visible = false
+				host_line_edit.editable = true
+				port_line_edit.editable = true
+				connect_button.text = "Connect"
+			else:
+				server_panel.visible = true
+				server_name_label.text = connectedServer.name
+				host_line_edit.editable = false
+				port_line_edit.editable = false
+				connect_button.text = "Disconnect"
+	).addTo(disposeBag)
+	
+	ToysManager.connectedDevices.listen(
+		func (devices: Array[GSDevice]):
+			available_devices_list.clear()
+			for device in devices:
+				available_devices_list.add_item("#%d %s" % [device.device_index, device.get_display_name()])
+	).addTo(disposeBag)
+	
+	ToysManager.linkedDevices.listen(
+		func (devices: Array[ToysManager.LinkedDevice]):
+			linked_devices_list.clear()
+			for device in devices:
+				linked_devices_list.add_item("#%d %s" % [device.index, device.name])
+	).addTo(disposeBag)
+	
+	ToysManager.showError.connect(show_error)
+
+func _exit_tree():
+	ToysManager.showError.disconnect(show_error)
+	
+	disposeBag.dispose()
+	disposeBag = null
+	
+func show_error(message: String):
+	OS.alert(message)
+
+func update_loading_overlay():
+	if (isConnecting):
+		loading_overlay_label.text = "Connecting..."
+		loading_overlay.visible = true
+	elif (isRequestingDeviceList):
+		loading_overlay_label.text = "Requesting device list..."
+		loading_overlay.visible = true
+	elif (isTesting):
+		loading_overlay_label.text = "Sending vibes..."
+		loading_overlay.visible = true
+	else:
+		loading_overlay.visible = false
+
+func on_connect_press():
+	if (ToysManager.connectedServer.get_value() == null):
+		ToysManager.connect_server()
+	else:
+		ToysManager.disconnect_server()
+
+func on_link_press():
+	var selectedIndices: PackedInt32Array = available_devices_list.get_selected_items()
+	available_devices_list.deselect_all()
+	for index in selectedIndices:
+		ToysManager.link_device(ToysManager.connectedDevices.get_value()[index])
+
+func on_unlink_press():
+	var selectedIndices: PackedInt32Array = linked_devices_list.get_selected_items()
+	linked_devices_list.deselect_all()
+	for index in selectedIndices:
+		ToysManager.unlink_device(ToysManager.linkedDevices.get_value()[index])
+
+func on_test_press():
+	var selectedIndices: PackedInt32Array = linked_devices_list.get_selected_items()
+	for index in selectedIndices:
+		ToysManager.test_device(ToysManager.linkedDevices.get_value()[index])
