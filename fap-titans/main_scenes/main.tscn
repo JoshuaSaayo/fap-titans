@@ -1,10 +1,27 @@
-[gd_scene load_steps=6 format=3 uid="uid://bksi846xp8iep"]
+[gd_scene load_steps=13 format=3 uid="uid://bksi846xp8iep"]
 
 [ext_resource type="PackedScene" uid="uid://81bu0rcynjp" path="res://main_scenes/monster.tscn" id="1_5wi6k"]
 [ext_resource type="Script" uid="uid://o03qqeuo1pj" path="res://main_scenes/main.gd" id="1_xxyhp"]
 [ext_resource type="PackedScene" uid="uid://dj2utacqq6dp7" path="res://main_scenes/player.tscn" id="2_8e5s8"]
 [ext_resource type="Texture2D" uid="uid://dpvsbifem2fgb" path="res://assets/main_backgrond.png" id="2_yp5qj"]
 [ext_resource type="Texture2D" uid="uid://bhkhijtmicbce" path="res://assets/main_foregrond.png" id="6_46m03"]
+[ext_resource type="Texture2D" uid="uid://8se1wandot" path="res://UI/assets/close.png" id="6_rn820"]
+[ext_resource type="Texture2D" uid="uid://34vp1ex7ngvh" path="res://UI/assets/close_hover.png" id="7_01u8o"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_y6ta4"]
+texture = ExtResource("6_rn820")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_7fymn"]
+texture = ExtResource("7_01u8o")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_w5xqx"]
+texture = ExtResource("7_01u8o")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_3xkvh"]
+texture = ExtResource("6_rn820")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_6f1vi"]
+texture = ExtResource("6_rn820")
 
 [node name="main" type="Node2D"]
 script = ExtResource("1_xxyhp")
@@ -15,7 +32,7 @@ offset_bottom = 720.0
 texture = ExtResource("2_yp5qj")
 
 [node name="monster" parent="." instance=ExtResource("1_5wi6k")]
-position = Vector2(740, 494)
+position = Vector2(740, 547)
 
 [node name="TextureRect2" type="TextureRect" parent="."]
 offset_right = 1280.0
@@ -25,10 +42,21 @@ texture = ExtResource("6_46m03")
 [node name="player" parent="." instance=ExtResource("2_8e5s8")]
 position = Vector2(740, 384)
 
+[node name="PauseBtn" type="Button" parent="."]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = 1180.0
+offset_top = 26.0
+offset_right = 1249.0
+offset_bottom = 95.0
+grow_horizontal = 0
+theme_override_styles/normal = SubResource("StyleBoxTexture_y6ta4")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_7fymn")
+theme_override_styles/hover = SubResource("StyleBoxTexture_w5xqx")
+theme_override_styles/disabled = SubResource("StyleBoxTexture_3xkvh")
+theme_override_styles/focus = SubResource("StyleBoxTexture_6f1vi")
+
 [node name="UI" type="CanvasLayer" parent="."]
 
-[node name="Label" type="Label" parent="UI"]
-offset_left = 1226.0
-offset_right = 1282.0
-offset_bottom = 23.0
-text = "SCORE:"
+[connection signal="pressed" from="PauseBtn" to="." method="_on_pause_btn_pressed"]

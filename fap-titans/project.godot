@@ -22,6 +22,7 @@ RhythmManager="*res://autoload/rhythm_manager.gd"
 PlayerManager="*res://autoload/player_manager.gd"
 MonsterManager="*res://autoload/monster_manager.gd"
 FadeTransition="*res://autoload/fade_transition.tscn"
+PauseManager="*res://autoload/pause_manager.gd"
 
 [display]
 

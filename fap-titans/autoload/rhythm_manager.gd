@@ -3,6 +3,7 @@ extends Node
 @export var bpm: float = 120.0
 var beat_interval: float = 0.0
 var time_since_last_beat: float = 0.0
+var is_active: bool = false
 
 signal note_hit(accuracy: String)
 signal note_missed
@@ -11,6 +12,9 @@ func _ready():
 	beat_interval = 60.0 / bpm
 
 func _process(delta):
+	if not is_active:
+		return
+	
 	time_since_last_beat += delta
 	if time_since_last_beat >= beat_interval:
 		spawn_note()
@@ -36,11 +40,11 @@ func spawn_note():
 	get_tree().current_scene.add_child(note)
 
 func register_hit(accuracy: String = "perfect"):
-	var damage = 25.0
+	var damage = 5.0
 	if accuracy == "perfect":
-		damage = 40.0
+		damage = 20.0
 	elif accuracy == "good":
-		damage = 30.0
+		damage = 10.0
 	
 	damage *= PlayerManager.get_combo_multiplier()
 	
@@ -52,3 +56,15 @@ func register_miss():
 	PlayerManager.take_damage(8.0)
 	PlayerManager.reset_combo()
 	emit_signal("note_missed")
+
+func start_game():
+	is_active = true
+	time_since_last_beat = 0.0
+	print("Rhythm System Started")
+
+func stop_game():
+	is_active = false
+	# Optional: remove all existing notes
+	for note in get_tree().get_nodes_in_group("notes"):
+		note.queue_free()
+	print("Rhythm System Stopped")

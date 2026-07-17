@@ -1,7 +1,7 @@
 [gd_scene load_steps=8 format=3 uid="uid://81bu0rcynjp"]
 
 [ext_resource type="Script" uid="uid://dq0gll1aabius" path="res://main_scenes/monster.gd" id="1_r8mnh"]
-[ext_resource type="Texture2D" uid="uid://c8sln0s6b8q05" path="res://assets/monster/minerva/minerva.png" id="2_7qafs"]
+[ext_resource type="SpineSkeletonDataResource" uid="uid://drjn68bbfngup" path="res://animations/assets/minerva/minerva.tres" id="3_h0lcc"]
 [ext_resource type="FontFile" uid="uid://d2564b14oyd1a" path="res://UI/fonts/IMFellEnglish-Regular.ttf" id="3_iatbb"]
 [ext_resource type="FontFile" uid="uid://ddcbng6448vj6" path="res://UI/fonts/Almendra-Bold.ttf" id="4_h0lcc"]
 
@@ -24,33 +24,38 @@ border_color = Color(0, 0, 0, 1)
 [sub_resource type="LabelSettings" id="LabelSettings_m8ux3"]
 font = ExtResource("4_h0lcc")
 font_size = 30
-font_color = Color(0.39308554, 0.3930855, 0.39308548, 1)
 outline_size = 2
 outline_color = Color(0, 0, 0, 1)
+shadow_size = 2
 
 [node name="monster" type="Node2D"]
 script = ExtResource("1_r8mnh")
 
-[node name="monster" type="Sprite2D" parent="."]
-position = Vector2(0, -206)
-texture = ExtResource("2_7qafs")
+[node name="MinervaSpine" type="SpineSprite" parent="."]
+position = Vector2(-644, -561)
+skeleton_data_res = ExtResource("3_h0lcc")
+preview_skin = "Default"
+preview_animation = "-- Empty --"
+preview_frame = false
+preview_time = 0.0
 
 [node name="ProgressBar" type="ProgressBar" parent="."]
 offset_left = -171.0
-offset_top = -439.0
+offset_top = -506.0
 offset_right = 171.0
-offset_bottom = -401.0
+offset_bottom = -455.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("3_iatbb")
 theme_override_font_sizes/font_size = 25
 theme_override_styles/background = SubResource("StyleBoxFlat_bjm3i")
 theme_override_styles/fill = SubResource("StyleBoxFlat_jlo68")
 value = 50.0
+show_percentage = false
 
 [node name="MonsterName" type="Label" parent="."]
 offset_left = -64.0
-offset_top = -481.0
+offset_top = -500.0
 offset_right = 67.0
-offset_bottom = -441.0
+offset_bottom = -460.0
 text = "MINERVA"
 label_settings = SubResource("LabelSettings_m8ux3")

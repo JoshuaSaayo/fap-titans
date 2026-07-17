@@ -1,4 +1,4 @@
-[gd_scene load_steps=92 format=3 uid="uid://cbgkrnpa2ypg8"]
+[gd_scene load_steps=93 format=3 uid="uid://cbgkrnpa2ypg8"]
 
 [ext_resource type="Texture2D" uid="uid://fdatsuj7mpp7" path="res://UI/assets/main_menu.png" id="1_4hkxj"]
 [ext_resource type="Script" uid="uid://fflsck3v0lyl" path="res://UI/menu.gd" id="1_wh1w0"]
@@ -28,6 +28,7 @@
 [ext_resource type="Texture2D" uid="uid://cfesjf7umgcia" path="res://UI/assets/audio_hover.png" id="23_3lojv"]
 [ext_resource type="Texture2D" uid="uid://cf0h52ggd1h1e" path="res://UI/assets/quit_box.png" id="26_3lojv"]
 [ext_resource type="Texture2D" uid="uid://ct8o3bytbkftu" path="res://UI/assets/disclaimer_box.png" id="26_qclgv"]
+[ext_resource type="AudioStream" uid="uid://d3wur0belrt5c" path="res://UI/audio/683938__waxsocks__realm-of-adventure.mp3" id="29_6m7h8"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_1qvof"]
 texture = ExtResource("3_e05sn")
@@ -871,6 +872,9 @@ theme_override_styles/hover = SubResource("StyleBoxFlat_wh1w0")
 theme_override_styles/disabled = SubResource("StyleBoxFlat_6m7h8")
 theme_override_styles/focus = SubResource("StyleBoxFlat_lkn22")
 text = "NO"
+
+[node name="MenuBG" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("29_6m7h8")
 
 [connection signal="pressed" from="StartBtn" to="." method="_on_start_btn_pressed"]
 [connection signal="pressed" from="SettingsBtn" to="." method="_on_settings_btn_pressed"]

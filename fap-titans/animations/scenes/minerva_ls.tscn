@@ -2,7 +2,9 @@
 
 [ext_resource type="SpineSkeletonDataResource" uid="uid://bumidjyegy7b2" path="res://animations/assets/minerva_ls/minerva_ls.tres" id="1_i1xml"]
 
-[node name="minerva_ls" type="SpineSprite"]
+[node name="minerva_ls" type="Node2D"]
+
+[node name="SpineSprite" type="SpineSprite" parent="."]
 skeleton_data_res = ExtResource("1_i1xml")
 preview_skin = "Default"
 preview_animation = "-- Empty --"

@@ -1,6 +1,7 @@
-[gd_scene load_steps=22 format=3 uid="uid://caffxk2yr2nnu"]
+[gd_scene load_steps=23 format=3 uid="uid://caffxk2yr2nnu"]
 
 [ext_resource type="Texture2D" uid="uid://do767ppl24w03" path="res://UI/assets/disclaimer_bg.png" id="1_rrma0"]
+[ext_resource type="Script" uid="uid://kqk3fk0mbb6o" path="res://UI/disclaimer.gd" id="1_x4wum"]
 [ext_resource type="Texture2D" uid="uid://ct8o3bytbkftu" path="res://UI/assets/disclaimer_box.png" id="2_mdqkj"]
 [ext_resource type="FontFile" uid="uid://ddcbng6448vj6" path="res://UI/fonts/Almendra-Bold.ttf" id="3_q4tu6"]
 [ext_resource type="FontFile" uid="uid://d2564b14oyd1a" path="res://UI/fonts/IMFellEnglish-Regular.ttf" id="4_ix3xv"]
@@ -59,6 +60,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_x4wum")
 
 [node name="TextureRect" type="TextureRect" parent="."]
 layout_mode = 0
@@ -112,8 +114,9 @@ Players must be 18+ to access or download this game.
 All characters are fictional adults and no minors are depicted."
 label_settings = SubResource("LabelSettings_qk1lu")
 horizontal_alignment = 1
+autowrap_mode = 2
 
-[node name="ProceedBtn" type="Button" parent="."]
+[node name="Proceed" type="Button" parent="."]
 layout_mode = 0
 offset_left = 70.0
 offset_top = 562.0
@@ -125,7 +128,7 @@ theme_override_styles/hover = SubResource("StyleBoxTexture_hrkp0")
 theme_override_styles/disabled = SubResource("StyleBoxTexture_kf2rc")
 theme_override_styles/focus = SubResource("StyleBoxTexture_eykqc")
 
-[node name="ExitBtn" type="Button" parent="."]
+[node name="Exit" type="Button" parent="."]
 layout_mode = 0
 offset_left = 822.0
 offset_top = 559.0
@@ -136,3 +139,14 @@ theme_override_styles/pressed = SubResource("StyleBoxTexture_w5puf")
 theme_override_styles/hover = SubResource("StyleBoxTexture_1w26y")
 theme_override_styles/disabled = SubResource("StyleBoxTexture_ycgwj")
 theme_override_styles/focus = SubResource("StyleBoxTexture_7046x")
+
+[node name="TransitionRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[connection signal="pressed" from="Exit" to="." method="_on_exit_pressed"]
