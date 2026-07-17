@@ -1,6 +1,7 @@
-[gd_scene load_steps=91 format=3 uid="uid://cbgkrnpa2ypg8"]
+[gd_scene load_steps=92 format=3 uid="uid://cbgkrnpa2ypg8"]
 
 [ext_resource type="Texture2D" uid="uid://fdatsuj7mpp7" path="res://UI/assets/main_menu.png" id="1_4hkxj"]
+[ext_resource type="Script" uid="uid://fflsck3v0lyl" path="res://UI/menu.gd" id="1_wh1w0"]
 [ext_resource type="Texture2D" uid="uid://bjqqfe1oc3lav" path="res://UI/assets/start_hover.png" id="2_qmqfe"]
 [ext_resource type="Texture2D" uid="uid://b5mf6f2jbu81j" path="res://UI/assets/start.png" id="3_e05sn"]
 [ext_resource type="Texture2D" uid="uid://dxkhwnr35nhgs" path="res://UI/assets/settings_hover.png" id="3_kfjwn"]
@@ -243,6 +244,7 @@ grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
+script = ExtResource("1_wh1w0")
 
 [node name="TextureRect" type="TextureRect" parent="."]
 layout_mode = 0
@@ -657,7 +659,7 @@ theme_override_styles/hover = SubResource("StyleBoxTexture_88vab")
 theme_override_styles/disabled = SubResource("StyleBoxTexture_enxwy")
 theme_override_styles/focus = SubResource("StyleBoxTexture_mw0eg")
 
-[node name="SettingsCloseBtn2" type="Button" parent="Settings"]
+[node name="SettingsCloseBtn" type="Button" parent="Settings"]
 layout_mode = 0
 offset_left = 1067.0
 offset_top = 31.0
@@ -705,6 +707,7 @@ theme_override_styles/disabled = SubResource("StyleBoxTexture_iy51k")
 theme_override_styles/focus = SubResource("StyleBoxTexture_5u7h1")
 
 [node name="Credits" type="Control" parent="."]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -777,7 +780,7 @@ theme_override_styles/hover = SubResource("StyleBoxTexture_du7oo")
 theme_override_styles/disabled = SubResource("StyleBoxTexture_g0u6x")
 theme_override_styles/focus = SubResource("StyleBoxTexture_qwuvs")
 
-[node name="Quit" type="Control" parent="."]
+[node name="Exit" type="Control" parent="."]
 visible = false
 layout_mode = 1
 anchors_preset = 15
@@ -786,7 +789,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="QuitPanel" type="Panel" parent="Quit"]
+[node name="QuitPanel" type="Panel" parent="Exit"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -801,7 +804,7 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxTexture_pb531")
 
-[node name="QuitLabel" type="Label" parent="Quit/QuitPanel"]
+[node name="QuitLabel" type="Label" parent="Exit/QuitPanel"]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
@@ -814,7 +817,7 @@ grow_horizontal = 2
 text = "QUIT THE GAME?"
 label_settings = SubResource("LabelSettings_60j7a")
 
-[node name="YesBtn" type="Button" parent="Quit/QuitPanel/QuitLabel"]
+[node name="YesBtn" type="Button" parent="Exit/QuitPanel/QuitLabel"]
 layout_mode = 1
 anchors_preset = 2
 anchor_top = 1.0
@@ -840,7 +843,7 @@ theme_override_styles/disabled = SubResource("StyleBoxFlat_6m7h8")
 theme_override_styles/focus = SubResource("StyleBoxFlat_lkn22")
 text = "YES"
 
-[node name="NoBtn" type="Button" parent="Quit/QuitPanel/QuitLabel"]
+[node name="NoBtn" type="Button" parent="Exit/QuitPanel/QuitLabel"]
 layout_mode = 1
 anchors_preset = 3
 anchor_left = 1.0
@@ -868,3 +871,14 @@ theme_override_styles/hover = SubResource("StyleBoxFlat_wh1w0")
 theme_override_styles/disabled = SubResource("StyleBoxFlat_6m7h8")
 theme_override_styles/focus = SubResource("StyleBoxFlat_lkn22")
 text = "NO"
+
+[connection signal="pressed" from="StartBtn" to="." method="_on_start_btn_pressed"]
+[connection signal="pressed" from="SettingsBtn" to="." method="_on_settings_btn_pressed"]
+[connection signal="pressed" from="CreditsBtn" to="." method="_on_credits_btn_pressed"]
+[connection signal="pressed" from="ExitBtn" to="." method="_on_exit_btn_pressed"]
+[connection signal="pressed" from="Settings/SettingsCloseBtn" to="." method="_on_settings_close_btn_pressed"]
+[connection signal="pressed" from="Settings/DisplayBtn" to="." method="_on_display_btn_pressed"]
+[connection signal="pressed" from="Settings/AudioBtn" to="." method="_on_audio_btn_pressed"]
+[connection signal="pressed" from="Credits/CreditsPanel/CreditsCloseBtn" to="." method="_on_credits_close_btn_pressed"]
+[connection signal="pressed" from="Exit/QuitPanel/QuitLabel/YesBtn" to="." method="_on_yes_btn_pressed"]
+[connection signal="pressed" from="Exit/QuitPanel/QuitLabel/NoBtn" to="." method="_on_no_btn_pressed"]
