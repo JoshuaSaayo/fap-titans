@@ -1,23 +1,35 @@
-[gd_scene load_steps=12 format=3 uid="uid://2rnepld0e15i"]
+[gd_scene load_steps=17 format=3 uid="uid://2rnepld0e15i"]
 
 [ext_resource type="Script" uid="uid://bb13ig8pehn8v" path="res://UI/toys.gd" id="1_bddyp"]
 [ext_resource type="Texture2D" uid="uid://bi2chehrag0nh" path="res://UI/assets/panel_9patch.png" id="2_bddyp"]
 [ext_resource type="Texture2D" uid="uid://8se1wandot" path="res://UI/assets/close.png" id="3_jrket"]
+[ext_resource type="FontFile" uid="uid://ddcbng6448vj6" path="res://UI/fonts/Almendra-Bold.ttf" id="3_kpid8"]
+[ext_resource type="FontFile" uid="uid://d2564b14oyd1a" path="res://UI/fonts/IMFellEnglish-Regular.ttf" id="4_2hs67"]
 [ext_resource type="Texture2D" uid="uid://34vp1ex7ngvh" path="res://UI/assets/close_hover.png" id="4_kpid8"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fptxl"]
-content_margin_left = 16.0
-content_margin_top = 16.0
-content_margin_right = 16.0
-content_margin_bottom = 16.0
-bg_color = Color(0, 0, 0, 0.38039216)
+[sub_resource type="LabelSettings" id="LabelSettings_fg2mh"]
+font = ExtResource("3_kpid8")
+font_size = 60
+font_color = Color(0.9098039, 0.7764706, 0.4392157, 1)
+shadow_size = 2
+shadow_color = Color(0, 0, 0, 1)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bddyp"]
-content_margin_left = 8.0
-content_margin_top = 8.0
-content_margin_right = 8.0
-content_margin_bottom = 8.0
-bg_color = Color(0, 0, 0, 0.38039216)
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_2hs67"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_je6km"]
+font = ExtResource("4_2hs67")
+font_size = 40
+font_color = Color(0.9098039, 0.7764706, 0.4392157, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_74sp6"]
+font = ExtResource("4_2hs67")
+font_size = 30
+font_color = Color(0.9098039, 0.7764706, 0.4392157, 1)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_fg2mh"]
+content_margin_left = 70.0
+content_margin_right = 70.0
+content_margin_bottom = 12.0
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_fg2mh"]
 texture = ExtResource("3_jrket")
@@ -45,6 +57,7 @@ script = ExtResource("1_bddyp")
 
 [node name="Control" type="Control" parent="."]
 layout_mode = 1
+anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = 69.0
@@ -74,29 +87,40 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_constants/separation = 20
+theme_override_constants/separation = 0
 
 [node name="Label" type="Label" parent="Control/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
-theme_override_font_sizes/font_size = 30
-text = "Toys"
+text = "CONNECT TOYS"
+label_settings = SubResource("LabelSettings_fg2mh")
+
+[node name="MarginContainer" type="MarginContainer" parent="Control/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 200
+theme_override_constants/margin_right = 200
+theme_override_constants/margin_bottom = 4
+
+[node name="ColorRect" type="ColorRect" parent="Control/VBoxContainer/MarginContainer"]
+custom_minimum_size = Vector2(0, 5)
+layout_mode = 2
+color = Color(0.9098039, 0.7764706, 0.4392157, 1)
 
 [node name="PanelContainer" type="PanelContainer" parent="Control/VBoxContainer"]
 custom_minimum_size = Vector2(640, 0)
 layout_mode = 2
 size_flags_horizontal = 4
-theme_override_styles/panel = SubResource("StyleBoxFlat_fptxl")
+theme_override_styles/panel = SubResource("StyleBoxEmpty_2hs67")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Control/VBoxContainer/PanelContainer"]
 layout_mode = 2
-theme_override_constants/separation = 16
+theme_override_constants/separation = 8
 
 [node name="Label" type="Label" parent="Control/VBoxContainer/PanelContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
-theme_override_font_sizes/font_size = 30
 text = "Buttplug.io server"
+label_settings = SubResource("LabelSettings_je6km")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Control/VBoxContainer/PanelContainer/VBoxContainer"]
 layout_mode = 2
@@ -105,8 +129,8 @@ theme_override_constants/separation = 16
 [node name="Label" type="Label" parent="Control/VBoxContainer/PanelContainer/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
-theme_override_font_sizes/font_size = 25
-text = "Host"
+text = "Fullscreen"
+label_settings = SubResource("LabelSettings_74sp6")
 horizontal_alignment = 2
 
 [node name="HostLineEdit" type="LineEdit" parent="Control/VBoxContainer/PanelContainer/VBoxContainer/HBoxContainer"]
@@ -124,8 +148,8 @@ theme_override_constants/separation = 16
 [node name="Label" type="Label" parent="Control/VBoxContainer/PanelContainer/VBoxContainer/HBoxContainer2"]
 layout_mode = 2
 size_flags_horizontal = 3
-theme_override_font_sizes/font_size = 25
 text = "Port"
+label_settings = SubResource("LabelSettings_74sp6")
 horizontal_alignment = 2
 
 [node name="PortLineEdit" type="LineEdit" parent="Control/VBoxContainer/PanelContainer/VBoxContainer/HBoxContainer2"]
@@ -147,17 +171,30 @@ text = "Connect"
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 3
-theme_override_styles/panel = SubResource("StyleBoxFlat_bddyp")
+theme_override_styles/panel = SubResource("StyleBoxEmpty_fg2mh")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Control/VBoxContainer/ServerPanel"]
 layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="MarginContainer" type="MarginContainer" parent="Control/VBoxContainer/ServerPanel/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 0
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 0
+theme_override_constants/margin_bottom = 4
+
+[node name="ColorRect" type="ColorRect" parent="Control/VBoxContainer/ServerPanel/VBoxContainer/MarginContainer"]
+custom_minimum_size = Vector2(0, 5)
+layout_mode = 2
+color = Color(0.9098039, 0.7764706, 0.4392157, 1)
 
 [node name="ServerNameLabel" type="Label" parent="Control/VBoxContainer/ServerPanel/VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 4
-theme_override_font_sizes/font_size = 30
 text = "Server name"
+label_settings = SubResource("LabelSettings_je6km")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Control/VBoxContainer/ServerPanel/VBoxContainer"]
 layout_mode = 2
@@ -168,10 +205,13 @@ theme_override_constants/separation = 16
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="Label" type="Label" parent="Control/VBoxContainer/ServerPanel/VBoxContainer/HBoxContainer/VBoxContainer"]
+[node name="Label2" type="Label" parent="Control/VBoxContainer/ServerPanel/VBoxContainer/HBoxContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
+size_flags_vertical = 0
 text = "Available devices"
+label_settings = SubResource("LabelSettings_74sp6")
+horizontal_alignment = 2
 
 [node name="AvailableDevicesList" type="ItemList" parent="Control/VBoxContainer/ServerPanel/VBoxContainer/HBoxContainer/VBoxContainer"]
 unique_name_in_owner = true
@@ -199,7 +239,10 @@ size_flags_horizontal = 3
 [node name="Label" type="Label" parent="Control/VBoxContainer/ServerPanel/VBoxContainer/HBoxContainer/VBoxContainer2"]
 layout_mode = 2
 size_flags_horizontal = 4
+size_flags_vertical = 0
 text = "Linked devices (used by the game)"
+label_settings = SubResource("LabelSettings_74sp6")
+horizontal_alignment = 2
 
 [node name="LinkedDevicesList" type="ItemList" parent="Control/VBoxContainer/ServerPanel/VBoxContainer/HBoxContainer/VBoxContainer2"]
 unique_name_in_owner = true
@@ -246,7 +289,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0, 0, 0, 0.60784316)
+color = Color(0, 0, 0, 0.8)
 
 [node name="LoadingOverlayLabel" type="Label" parent="LoadingOverlay"]
 unique_name_in_owner = true
@@ -256,15 +299,15 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -57.5
-offset_top = -21.0
-offset_right = 57.5
-offset_bottom = 21.0
+offset_left = -110.5
+offset_top = -26.0
+offset_right = 110.5
+offset_bottom = 26.0
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 4
-theme_override_font_sizes/font_size = 30
-text = "Working..."
+text = "Connecting..."
+label_settings = SubResource("LabelSettings_je6km")
 
 [connection signal="pressed" from="Control/VBoxContainer/PanelContainer/VBoxContainer/ConnectButton" to="." method="on_connect_press"]
 [connection signal="pressed" from="Control/VBoxContainer/ServerPanel/VBoxContainer/HBoxContainer/VBoxContainer/Button3" to="." method="on_link_press"]
