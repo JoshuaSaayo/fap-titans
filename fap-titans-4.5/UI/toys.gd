@@ -2,8 +2,8 @@ extends Control
 
 @onready var loading_overlay = %LoadingOverlay
 @onready var loading_overlay_label = %LoadingOverlayLabel
-@onready var host_line_edit = %HostLineEdit
-@onready var port_line_edit = %PortLineEdit
+@onready var host_line_edit: LineEdit = %HostLineEdit
+@onready var port_line_edit: LineEdit = %PortLineEdit
 @onready var connect_button = %ConnectButton
 @onready var server_panel = %ServerPanel
 @onready var server_name_label = %ServerNameLabel
@@ -93,7 +93,14 @@ func update_loading_overlay():
 
 func on_connect_press():
 	if (ToysManager.connectedServer.get_value() == null):
-		ToysManager.connect_server()
+		var host = host_line_edit.text.lstrip(" ").rstrip(" ")
+		var port = port_line_edit.text.lstrip(" ").rstrip(" ")
+		
+		if (host.is_empty() || port.is_empty()):
+			show_error("Host and port can't be empty")
+			return
+		
+		ToysManager.connect_server(host, port.to_int())
 	else:
 		ToysManager.disconnect_server()
 

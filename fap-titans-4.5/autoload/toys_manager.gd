@@ -88,13 +88,18 @@ func _ready():
 				connectedDevices.setValue([] as Array[GSDevice])
 	)
 
-func connect_server():
+func connect_server(host: String, port: int):
 	isConnecting.setValue(true)
 	await get_tree().create_timer(0.5).timeout
 	
 	GSClient.server_error.connect(on_server_error)
 	
-	GSClient.start("127.0.0.1", 12345, 10)
+	var immediateError = GSClient.start(host, port, 10)
+	if (immediateError != Error.OK):
+		showError.emit("Failed to connect")
+		isConnecting.setValue(false)
+		return
+	
 	var connected = await GSClient.client_connection_changed
 	GSClient.server_error.disconnect(on_server_error)
 	isConnecting.setValue(false)
