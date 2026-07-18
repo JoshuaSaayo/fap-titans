@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Fap Titans"
-run/main_scene="uid://bksi846xp8iep"
+run/main_scene="uid://caffxk2yr2nnu"
 config/features=PackedStringArray("4.5", "Forward Plus")
 config/icon="res://icon.svg"
 
@@ -21,6 +21,8 @@ JudgmentManager="*res://autoload/judgment_manager.gd"
 RhythmManager="*res://autoload/rhythm_manager.gd"
 PlayerManager="*res://autoload/player_manager.gd"
 MonsterManager="*res://autoload/monster_manager.gd"
+FadeTransition="*res://autoload/fade_transition.tscn"
+PauseManager="*res://autoload/pause_manager.gd"
 ToysManager="*res://autoload/toys_manager.gd"
 GSClient="*res://addons/gspot/gsclient.gd"
 

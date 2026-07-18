@@ -1,41 +1,64 @@
 extends Node2D
 
-@export var max_hp: float = 1000.0
-var current_hp: float = 1000.0
+@export var max_hp: float = 100.0
+var current_hp: float = 100.0
 
+@onready var spine: SpineSprite = $MinervaSpine
 @onready var hp_bar = $ProgressBar
-@onready var monster: Sprite2D = $monster
 
-enum Phase { FULL, HALF, LOW }
-var current_phase = Phase.FULL
+enum Phase { CLOTHED, DAMAGED, NUDE }
+var current_phase = Phase.CLOTHED
 
 func _ready():
+	play_idle_animation()
 	hp_bar.max_value = max_hp
-	update_hp(0)
-	MonsterManager.register_monster(self)
+	current_hp = max_hp
+	update_hp_ui()
+	apply_skin()          # Initial skin
+
+func play_idle_animation():
+	spine.get_animation_state().set_animation("animation", true, 0)
 
 func take_damage(amount: float):
 	current_hp = clamp(current_hp - amount, 0, max_hp)
-	update_hp(0)
-	check_phase()
+	update_hp_ui()
+	check_and_change_phase()
 
-func update_hp(_delta):
+func update_hp_ui():
 	hp_bar.value = current_hp
 
-func check_phase():
-	var hp_percent = current_hp / max_hp
+func check_and_change_phase():
+	var hp_percent = (current_hp / max_hp) * 100
+	var new_phase = current_phase
 	
-	if hp_percent > 0.6 and current_phase != Phase.FULL:
-		current_phase = Phase.FULL
-		change_form(0)  # Full armor / clothed
-	elif hp_percent > 0.3 and hp_percent <= 0.6 and current_phase != Phase.HALF:
-		current_phase = Phase.HALF
-		change_form(1)  # Partially stripped
-	elif hp_percent <= 0.3 and current_phase != Phase.LOW:
-		current_phase = Phase.LOW
-		change_form(2)  # Almost nude / lewd
+	if hp_percent >= 75:
+		new_phase = Phase.CLOTHED
+	elif hp_percent >= 35:
+		new_phase = Phase.DAMAGED
+	else:
+		new_phase = Phase.NUDE
+	
+	if new_phase != current_phase:
+		current_phase = new_phase
+		apply_skin()
 
-func change_form(phase_index: int):
-	# TODO: Change texture or animation here
-	print("Monster changed to Phase ", phase_index)
-	# Example: sprite.texture = load("res://sprites/monster/phase_" + str(phase_index) + ".png")
+func apply_skin():
+	if spine == null:
+		return
+
+	var skin_name := ""
+
+	match current_phase:
+		Phase.CLOTHED:
+			skin_name = "clothed"
+		Phase.DAMAGED:
+			skin_name = "damaged"
+		Phase.NUDE:
+			skin_name = "nude"
+
+	var skeleton = spine.get_skeleton()
+
+	skeleton.set_skin_by_name(skin_name)
+	skeleton.set_slots_to_setup_pose()
+
+	print("Skin changed to: ", skin_name)

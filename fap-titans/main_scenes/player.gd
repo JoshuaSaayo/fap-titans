@@ -5,6 +5,7 @@ var current_hp: float = 100.0
 
 @onready var hp_bar = $ProgressBar
 @onready var anim: AnimatedSprite2D = $AnimatedSprite2D
+@onready var slash_sound: AudioStreamPlayer = $SlashSound
 
 var combo: int = 0
 @onready var combo_label = $ComboLabel
@@ -66,6 +67,7 @@ func get_combo_multiplier() -> float:
 func play_slash_animation():
 	if anim:
 		anim.play("slash")
+		slash_sound.play()
 		
 		# Return to idle after slash animation finishes
 		await anim.animation_finished

@@ -5,6 +5,7 @@ extends Node2D
 
 func _ready():
 	# Extra safety registration
+	RhythmManager.start_game()
 	if not PlayerManager.player:
 		PlayerManager.register_player(player)
 	if not MonsterManager.monster:
@@ -26,3 +27,9 @@ func _process(delta):
 	if monster.current_hp <= 0:
 		print("Victory! Monster Defeated")
 		get_tree().paused = true
+
+
+func _on_pause_btn_pressed() -> void:
+	if PauseManager.is_paused: return
+	PauseManager.toggle_pause()
+	add_child(load("res://UI/pause_menu.tscn").instantiate())

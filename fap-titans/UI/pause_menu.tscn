@@ -1,0 +1,219 @@
+[gd_scene load_steps=12 format=3 uid="uid://cu6v430s42q7c"]
+
+[ext_resource type="Script" uid="uid://ok7wasp3re7q" path="res://UI/pause_menu.gd" id="1_0b5ob"]
+[ext_resource type="Texture2D" uid="uid://cf0h52ggd1h1e" path="res://UI/assets/quit_box.png" id="1_ltd3m"]
+[ext_resource type="FontFile" uid="uid://ddcbng6448vj6" path="res://UI/fonts/Almendra-Bold.ttf" id="2_03fe5"]
+[ext_resource type="FontFile" uid="uid://d2564b14oyd1a" path="res://UI/fonts/IMFellEnglish-Regular.ttf" id="3_0b5ob"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_jfm1e"]
+texture = ExtResource("1_ltd3m")
+
+[sub_resource type="LabelSettings" id="LabelSettings_pqlge"]
+font = ExtResource("2_03fe5")
+font_size = 60
+font_color = Color(0.9098039, 0.7764706, 0.4392157, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nben2"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xv4gp"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mxjhc"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_k6dah"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mexjk"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[node name="pause_menu" type="Control"]
+process_mode = 3
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_0b5ob")
+
+[node name="DarkOverlay" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.7058824)
+
+[node name="PausePanel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -273.0
+offset_top = -124.5
+offset_right = 273.0
+offset_bottom = 124.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_jfm1e")
+
+[node name="PauseLabel" type="Label" parent="PausePanel"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -91.0
+offset_top = 18.0
+offset_right = 92.0
+offset_bottom = 97.0
+grow_horizontal = 2
+text = "PAUSE"
+label_settings = SubResource("LabelSettings_pqlge")
+
+[node name="ResumeBtn" type="Button" parent="PausePanel"]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 62.0
+offset_top = -80.5
+offset_right = 195.0
+offset_bottom = -41.5
+grow_vertical = 0
+theme_override_colors/font_color = Color(0.9098039, 0.7764706, 0.4392157, 1)
+theme_override_colors/font_focus_color = Color(0.9098039, 0.7764706, 0.4392157, 1)
+theme_override_colors/font_pressed_color = Color(1, 1, 0, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 0, 1)
+theme_override_colors/font_hover_pressed_color = Color(1, 1, 0, 1)
+theme_override_colors/font_disabled_color = Color(0.8745098, 0.8745098, 0.8745098, 0)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 0)
+theme_override_fonts/font = ExtResource("3_0b5ob")
+theme_override_font_sizes/font_size = 30
+theme_override_styles/normal = SubResource("StyleBoxFlat_nben2")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_xv4gp")
+theme_override_styles/hover = SubResource("StyleBoxFlat_mxjhc")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_k6dah")
+theme_override_styles/focus = SubResource("StyleBoxFlat_mexjk")
+text = "RESUME"
+
+[node name="MainMenuBtn" type="Button" parent="PausePanel"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -256.0
+offset_top = -80.5
+offset_right = -62.0
+offset_bottom = -41.5
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_colors/font_color = Color(0.9098039, 0.7764706, 0.4392157, 1)
+theme_override_colors/font_focus_color = Color(0.9098039, 0.7764706, 0.4392157, 1)
+theme_override_colors/font_pressed_color = Color(1, 1, 0, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 0, 1)
+theme_override_colors/font_hover_pressed_color = Color(1, 1, 0, 1)
+theme_override_colors/font_disabled_color = Color(0.8745098, 0.8745098, 0.8745098, 0)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 0)
+theme_override_fonts/font = ExtResource("3_0b5ob")
+theme_override_font_sizes/font_size = 30
+theme_override_styles/normal = SubResource("StyleBoxFlat_nben2")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_xv4gp")
+theme_override_styles/hover = SubResource("StyleBoxFlat_mxjhc")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_k6dah")
+theme_override_styles/focus = SubResource("StyleBoxFlat_mexjk")
+text = "MAIN MENU"
+
+[node name="ConfirmPanel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -273.0
+offset_top = -124.5
+offset_right = 273.0
+offset_bottom = 124.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_jfm1e")
+
+[node name="ConfirmLabel" type="Label" parent="ConfirmPanel"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -91.0
+offset_top = 18.0
+offset_right = 92.0
+offset_bottom = 97.0
+grow_horizontal = 2
+text = "MAIN MENU"
+label_settings = SubResource("LabelSettings_pqlge")
+
+[node name="ConfirmBtn" type="Button" parent="ConfirmPanel"]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 107.5
+offset_top = -80.5
+offset_right = 164.5
+offset_bottom = -41.5
+grow_vertical = 0
+theme_override_colors/font_color = Color(0.9098039, 0.7764706, 0.4392157, 1)
+theme_override_colors/font_focus_color = Color(0.9098039, 0.7764706, 0.4392157, 1)
+theme_override_colors/font_pressed_color = Color(1, 1, 0, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 0, 1)
+theme_override_colors/font_hover_pressed_color = Color(1, 1, 0, 1)
+theme_override_colors/font_disabled_color = Color(0.8745098, 0.8745098, 0.8745098, 0)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 0)
+theme_override_fonts/font = ExtResource("3_0b5ob")
+theme_override_font_sizes/font_size = 30
+theme_override_styles/normal = SubResource("StyleBoxFlat_nben2")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_xv4gp")
+theme_override_styles/hover = SubResource("StyleBoxFlat_mxjhc")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_k6dah")
+theme_override_styles/focus = SubResource("StyleBoxFlat_mexjk")
+text = "CONFIRM"
+
+[node name="CancelBtn" type="Button" parent="ConfirmPanel"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -162.5
+offset_top = -80.5
+offset_right = -105.5
+offset_bottom = -41.5
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_colors/font_color = Color(0.9098039, 0.7764706, 0.4392157, 1)
+theme_override_colors/font_focus_color = Color(0.9098039, 0.7764706, 0.4392157, 1)
+theme_override_colors/font_pressed_color = Color(1, 1, 0, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 0, 1)
+theme_override_colors/font_hover_pressed_color = Color(1, 1, 0, 1)
+theme_override_colors/font_disabled_color = Color(0.8745098, 0.8745098, 0.8745098, 0)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 0)
+theme_override_fonts/font = ExtResource("3_0b5ob")
+theme_override_font_sizes/font_size = 30
+theme_override_styles/normal = SubResource("StyleBoxFlat_nben2")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_xv4gp")
+theme_override_styles/hover = SubResource("StyleBoxFlat_mxjhc")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_k6dah")
+theme_override_styles/focus = SubResource("StyleBoxFlat_mexjk")
+text = "CANCEL"
+
+[connection signal="pressed" from="PausePanel/ResumeBtn" to="." method="_on_resume_btn_pressed"]
+[connection signal="pressed" from="PausePanel/MainMenuBtn" to="." method="_on_main_menu_btn_pressed"]
+[connection signal="pressed" from="ConfirmPanel/ConfirmBtn" to="." method="_on_confirm_btn_pressed"]
+[connection signal="pressed" from="ConfirmPanel/CancelBtn" to="." method="_on_cancel_btn_pressed"]
