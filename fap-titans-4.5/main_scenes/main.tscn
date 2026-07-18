@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://bksi846xp8iep"]
+[gd_scene load_steps=15 format=3 uid="uid://bksi846xp8iep"]
 
 [ext_resource type="PackedScene" uid="uid://81bu0rcynjp" path="res://main_scenes/monster.tscn" id="1_5wi6k"]
 [ext_resource type="Script" uid="uid://o03qqeuo1pj" path="res://main_scenes/main.gd" id="1_xxyhp"]
@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://8se1wandot" path="res://UI/assets/close.png" id="6_rn820"]
 [ext_resource type="Texture2D" uid="uid://34vp1ex7ngvh" path="res://UI/assets/close_hover.png" id="7_01u8o"]
 [ext_resource type="AudioStream" uid="uid://cu24c5821rkle" path="res://UI/audio/646460__g-14__medieval-march-mp3.mp3" id="8_rn820"]
+[ext_resource type="PackedScene" uid="uid://bokx50577ie6u" path="res://UI/toy_debug_view.tscn" id="9_01u8o"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_y6ta4"]
 texture = ExtResource("6_rn820")
@@ -64,5 +65,15 @@ theme_override_styles/pressed = SubResource("StyleBoxTexture_7fymn")
 theme_override_styles/hover = SubResource("StyleBoxTexture_w5xqx")
 theme_override_styles/disabled = SubResource("StyleBoxTexture_3xkvh")
 theme_override_styles/focus = SubResource("StyleBoxTexture_6f1vi")
+
+[node name="ToyDebugView" parent="." instance=ExtResource("9_01u8o")]
+custom_minimum_size = Vector2(200, 100)
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+grow_horizontal = 1
+grow_vertical = 1
+size_flags_horizontal = 0
+size_flags_vertical = 0
 
 [connection signal="pressed" from="UILayer/PauseBtn" to="." method="_on_pause_btn_pressed"]

@@ -66,8 +66,10 @@ var isTesting: BehaviourSubject
 var connectedServer: BehaviourSubject
 var connectedDevices: BehaviourSubject
 var linkedDevices: BehaviourSubject
+var vibrationLevel: BehaviourSubject
 var did_call_devices_lambda: bool
 var devices_labda: Callable
+var time: float = 0
 signal showError(message: String)
 
 func _init():
@@ -77,6 +79,7 @@ func _init():
 	connectedServer = BehaviourSubject.new(null)
 	connectedDevices = BehaviourSubject.new([] as Array[GSDevice])
 	linkedDevices = BehaviourSubject.new([] as Array[LinkedDevice])
+	vibrationLevel = BehaviourSubject.new(0.0)
 
 func _ready():
 	ProjectSettings.set_setting(GSConstants.PROJECT_SETTING_CLIENT_NAME, ProjectSettings.get_setting("application/config/name"))
@@ -89,6 +92,7 @@ func _ready():
 			else:
 				connectedServer.setValue(null)
 				connectedDevices.setValue([] as Array[GSDevice])
+				linkedDevices.setValue([] as Array[LinkedDevice])
 	)
 
 func connect_server(host: String, port: int):
@@ -171,3 +175,29 @@ func test_device(linkedDevice: LinkedDevice):
 	device.vibrate(1, 3)
 	await get_tree().create_timer(3.0).timeout
 	isTesting.setValue(false)
+
+func set_all_vibration_level(level: float):
+	if (connectedServer.get_value() == null):
+		return
+
+	var devices = connectedDevices.get_value()
+	var linkedDevicesArray = linkedDevices.get_value()
+	var devicesToCommand = devices.filter(
+		func (device: GSDevice):
+			return linkedDevicesArray.any(
+				func (linkedDevice: LinkedDevice):
+					return linkedDevice.index == device.device_index
+			)
+	)
+	
+	for device: GSDevice in devicesToCommand:
+		device.vibrate(level)
+
+func _process(delta: float) -> void:
+	time += delta * PI * 2
+	if (time > PI * 2):
+		time -= PI * 2
+
+	var level = (sin(time) + 1) / 2
+	vibrationLevel.setValue(level)
+	set_all_vibration_level(level)
