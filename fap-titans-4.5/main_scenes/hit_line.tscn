@@ -1,0 +1,12 @@
+[gd_scene load_steps=2 format=3 uid="uid://d217pypt8oiqc"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_c21ge"]
+
+[node name="hit_line" type="Area2D"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+rotation = -0.002326977
+shape = SubResource("RectangleShape2D_c21ge")
+disabled = true
+
+[node name="Sprite2D" type="Sprite2D" parent="."]

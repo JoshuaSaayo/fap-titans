@@ -1,0 +1,16 @@
+[remap]
+
+importer="spine.atlas"
+type="SpineAtlasResource"
+uid="uid://c0nedynqk0njr"
+path="res://.godot/imported/minerva.atlas-bf224f3f2ddceac2e099320d7e31a4ee.spatlas"
+
+[deps]
+
+source_file="res://animations/assets/minerva/minerva.atlas"
+dest_files=["res://.godot/imported/minerva.atlas-bf224f3f2ddceac2e099320d7e31a4ee.spatlas"]
+
+[params]
+
+normal_map_prefix="n"
+specular_map_prefix="s"
