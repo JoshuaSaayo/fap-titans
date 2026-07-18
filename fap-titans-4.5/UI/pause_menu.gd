@@ -21,7 +21,7 @@ func _on_main_menu_btn_pressed() -> void:
 func _on_confirm_btn_pressed() -> void:
 	PauseManager.is_paused = false
 	get_tree().paused = false
-	get_tree().change_scene_to_file("res://UI/menu.tscn")
+	await FadeTransition.fade_to_scene("res://UI/menu.tscn")
 
 
 func _on_cancel_btn_pressed() -> void:

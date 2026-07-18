@@ -23,11 +23,14 @@ func _process(delta):
 		get_tree().paused = true
 	
 	if monster.current_hp <= 0:
-		print("Victory! Monster Defeated")
-		get_tree().paused = true
-
+		get_tree().change_scene_to_file("res://animations/scenes/minerva_ls.tscn")
+		
 
 func _on_pause_btn_pressed() -> void:
-	if PauseManager.is_paused: return
+	if PauseManager.is_paused: 
+		return
+	
 	PauseManager.toggle_pause()
-	add_child(load("res://UI/pause_menu.tscn").instantiate())
+	
+	var pause_menu = load("res://UI/pause_menu.tscn").instantiate()
+	$UILayer.add_child(pause_menu)   # ← Add to CanvasLayer instead

@@ -1,0 +1,166 @@
+[gd_scene load_steps=7 format=3 uid="uid://ea4rqyeucq8u"]
+
+[ext_resource type="Texture2D" uid="uid://do767ppl24w03" path="res://UI/assets/disclaimer_bg.png" id="1_de721"]
+[ext_resource type="Script" uid="uid://ct8ecg7y53ah0" path="res://UI/end_credits.gd" id="1_mqmpb"]
+[ext_resource type="FontFile" uid="uid://ddcbng6448vj6" path="res://UI/fonts/Almendra-Bold.ttf" id="2_mqmpb"]
+[ext_resource type="FontFile" uid="uid://d2564b14oyd1a" path="res://UI/fonts/IMFellEnglish-Regular.ttf" id="3_wv3s7"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_41ndo"]
+font = ExtResource("2_mqmpb")
+font_size = 60
+font_color = Color(0.9098039, 0.7764706, 0.4392157, 1)
+shadow_size = 2
+shadow_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_8tab6"]
+font = ExtResource("3_wv3s7")
+font_size = 40
+font_color = Color(0.9098039, 0.7764706, 0.4392157, 1)
+shadow_size = 2
+shadow_color = Color(0, 0, 0, 1)
+
+[node name="end_credits" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_mqmpb")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("1_de721")
+
+[node name="ColorRect" type="ColorRect" parent="TextureRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.78431374)
+
+[node name="EndCredits" type="Control" parent="."]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="CreditsLabel" type="Label" parent="EndCredits"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = 646.0
+offset_top = 102.0
+offset_right = 1158.0
+offset_bottom = 263.0
+grow_horizontal = 2
+text = "THANK YOU FOR 
+PLAYING MY GAME!"
+label_settings = SubResource("LabelSettings_41ndo")
+horizontal_alignment = 2
+
+[node name="StayTuned" type="Label" parent="EndCredits"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 778.0
+offset_top = 246.0
+offset_right = 1159.0
+offset_bottom = 298.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Stay tuned for updates!"
+label_settings = SubResource("LabelSettings_8tab6")
+horizontal_alignment = 2
+
+[node name="SoundResources" type="Control" parent="."]
+visible = false
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="CreditsLabel" type="Label" parent="SoundResources"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = 696.0
+offset_top = 33.0
+offset_right = 1208.0
+offset_bottom = 112.0
+grow_horizontal = 2
+text = "DEVELOPERS"
+label_settings = SubResource("LabelSettings_41ndo")
+horizontal_alignment = 2
+
+[node name="SoundLabel" type="Label" parent="SoundResources"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 828.0
+offset_top = 91.0
+offset_right = 1209.0
+offset_bottom = 198.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Fleurdelis the Witch
+Velvet Opcode"
+label_settings = SubResource("LabelSettings_8tab6")
+horizontal_alignment = 2
+
+[node name="CreditsLabel2" type="Label" parent="SoundResources"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = 696.0
+offset_top = 239.0
+offset_right = 1208.0
+offset_bottom = 318.0
+grow_horizontal = 2
+text = "SOUND RESOURCES"
+label_settings = SubResource("LabelSettings_41ndo")
+horizontal_alignment = 2
+
+[node name="SoundLabel2" type="Label" parent="SoundResources"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 23.0
+offset_top = 321.0
+offset_right = 1209.0
+offset_bottom = 703.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "-Realm of Adventure by waxsocks -- https://freesound.org/s/683938/ 
+-- License: Creative Commons 0
+-Slash1.ogg by wesleyextreme_gamer -- https://freesound.org/s/574821/ 
+-- License: Creative Commons 0
+-Medieval March (mp3) by G-14 -- https://freesound.org/s/646460/ 
+-- License: Creative Commons 0
+"
+label_settings = SubResource("LabelSettings_8tab6")
+horizontal_alignment = 2
+
+[node name="FadeRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Timer" type="Timer" parent="."]

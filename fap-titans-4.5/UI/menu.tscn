@@ -1,4 +1,4 @@
-[gd_scene load_steps=93 format=3 uid="uid://cbgkrnpa2ypg8"]
+[gd_scene load_steps=100 format=3 uid="uid://cbgkrnpa2ypg8"]
 
 [ext_resource type="Texture2D" uid="uid://fdatsuj7mpp7" path="res://UI/assets/main_menu.png" id="1_4hkxj"]
 [ext_resource type="Script" uid="uid://fflsck3v0lyl" path="res://UI/menu.gd" id="1_wh1w0"]
@@ -8,6 +8,8 @@
 [ext_resource type="Texture2D" uid="uid://dlgi75cn16e3d" path="res://UI/assets/settings.png" id="4_dte3n"]
 [ext_resource type="Texture2D" uid="uid://cgqpf8gjyhccf" path="res://UI/assets/credits_btn.png" id="5_cvc1e"]
 [ext_resource type="Texture2D" uid="uid://385fuoruejye" path="res://UI/assets/exit.png" id="5_dhncy"]
+[ext_resource type="Texture2D" uid="uid://dpfsltxlyo6jx" path="res://UI/assets/connect_toys.png" id="5_xafrf"]
+[ext_resource type="Texture2D" uid="uid://b7huu86i1kkkj" path="res://UI/assets/connect_toys_hover.png" id="6_6e708"]
 [ext_resource type="Texture2D" uid="uid://ckxlb3tg8polr" path="res://UI/assets/exit_hover.png" id="6_cvc1e"]
 [ext_resource type="Texture2D" uid="uid://ccxl3er420ukb" path="res://UI/assets/credits_btn_hover.png" id="6_re817"]
 [ext_resource type="Texture2D" uid="uid://bhtvolef87t30" path="res://UI/assets/logo.png" id="9_cvc1e"]
@@ -44,6 +46,21 @@ texture = ExtResource("3_e05sn")
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_60j7a"]
 texture = ExtResource("3_e05sn")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_xvb12"]
+texture = ExtResource("5_xafrf")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_o0if4"]
+texture = ExtResource("6_6e708")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_8citi"]
+texture = ExtResource("6_6e708")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_qgwjd"]
+texture = ExtResource("5_xafrf")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_t5t14"]
+texture = ExtResource("5_xafrf")
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_k0tp0"]
 texture = ExtResource("4_dte3n")
@@ -104,6 +121,8 @@ texture = ExtResource("12_vso1l")
 font = ExtResource("13_22gd7")
 font_size = 60
 font_color = Color(0.9098039, 0.7764706, 0.4392157, 1)
+shadow_size = 2
+shadow_color = Color(0, 0, 0, 1)
 
 [sub_resource type="LabelSettings" id="LabelSettings_xbecv"]
 font = ExtResource("10_re817")
@@ -212,11 +231,15 @@ texture = ExtResource("26_qclgv")
 font = ExtResource("13_22gd7")
 font_size = 60
 font_color = Color(0.9098039, 0.7764706, 0.4392157, 1)
+shadow_size = 2
+shadow_color = Color(0, 0, 0, 1)
 
 [sub_resource type="LabelSettings" id="LabelSettings_o0if4"]
 font = ExtResource("10_re817")
 font_size = 40
 font_color = Color(0.9098039, 0.7764706, 0.4392157, 1)
+shadow_size = 2
+shadow_color = Color(0, 0, 0, 1)
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_pb531"]
 texture = ExtResource("26_3lojv")
@@ -249,30 +272,42 @@ script = ExtResource("1_wh1w0")
 
 [node name="TextureRect" type="TextureRect" parent="."]
 layout_mode = 0
-offset_left = -41.0
+offset_left = -75.0
 offset_top = -109.0
-offset_right = 1359.0
+offset_right = 1325.0
 offset_bottom = 891.0
 texture = ExtResource("1_4hkxj")
 
 [node name="StartBtn" type="Button" parent="."]
 layout_mode = 0
 offset_left = 95.0
-offset_top = 249.0
+offset_top = 201.0
 offset_right = 483.0
-offset_bottom = 326.0
+offset_bottom = 278.0
 theme_override_styles/normal = SubResource("StyleBoxTexture_1qvof")
 theme_override_styles/pressed = SubResource("StyleBoxTexture_wcfn6")
 theme_override_styles/hover = SubResource("StyleBoxTexture_vso1l")
 theme_override_styles/disabled = SubResource("StyleBoxTexture_22gd7")
 theme_override_styles/focus = SubResource("StyleBoxTexture_60j7a")
 
+[node name="ToysBtn" type="Button" parent="."]
+layout_mode = 0
+offset_left = 96.0
+offset_top = 288.0
+offset_right = 476.0
+offset_bottom = 357.0
+theme_override_styles/normal = SubResource("StyleBoxTexture_xvb12")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_o0if4")
+theme_override_styles/hover = SubResource("StyleBoxTexture_8citi")
+theme_override_styles/disabled = SubResource("StyleBoxTexture_qgwjd")
+theme_override_styles/focus = SubResource("StyleBoxTexture_t5t14")
+
 [node name="SettingsBtn" type="Button" parent="."]
 layout_mode = 0
 offset_left = 94.0
-offset_top = 356.0
+offset_top = 362.0
 offset_right = 482.0
-offset_bottom = 433.0
+offset_bottom = 439.0
 theme_override_styles/normal = SubResource("StyleBoxTexture_k0tp0")
 theme_override_styles/pressed = SubResource("StyleBoxTexture_xbecv")
 theme_override_styles/hover = SubResource("StyleBoxTexture_emkvv")
@@ -282,9 +317,9 @@ theme_override_styles/focus = SubResource("StyleBoxTexture_e3ygf")
 [node name="CreditsBtn" type="Button" parent="."]
 layout_mode = 0
 offset_left = 94.0
-offset_top = 463.0
+offset_top = 447.0
 offset_right = 482.0
-offset_bottom = 540.0
+offset_bottom = 524.0
 theme_override_styles/normal = SubResource("StyleBoxTexture_yecwb")
 theme_override_styles/pressed = SubResource("StyleBoxTexture_qoksu")
 theme_override_styles/hover = SubResource("StyleBoxTexture_gkf6b")
@@ -294,9 +329,9 @@ theme_override_styles/focus = SubResource("StyleBoxTexture_5ccw6")
 [node name="ExitBtn" type="Button" parent="."]
 layout_mode = 0
 offset_left = 94.0
-offset_top = 570.0
+offset_top = 534.0
 offset_right = 482.0
-offset_bottom = 647.0
+offset_bottom = 611.0
 theme_override_styles/normal = SubResource("StyleBoxTexture_4hkxj")
 theme_override_styles/pressed = SubResource("StyleBoxTexture_dte3n")
 theme_override_styles/hover = SubResource("StyleBoxTexture_dhncy")
@@ -318,11 +353,11 @@ label_settings = SubResource("LabelSettings_1qvof")
 
 [node name="Version" type="Label" parent="."]
 layout_mode = 0
-offset_left = 1139.0
-offset_top = 20.0
-offset_right = 1261.0
-offset_bottom = 59.0
-text = "v1.0 demo"
+offset_left = 1214.0
+offset_top = 660.0
+offset_right = 1260.0
+offset_bottom = 699.0
+text = "v1.0"
 label_settings = SubResource("LabelSettings_1qvof")
 
 [node name="Settings" type="Control" parent="."]
@@ -875,6 +910,7 @@ text = "NO"
 
 [node name="MenuBG" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("29_6m7h8")
+autoplay = true
 
 [connection signal="pressed" from="StartBtn" to="." method="_on_start_btn_pressed"]
 [connection signal="pressed" from="SettingsBtn" to="." method="_on_settings_btn_pressed"]
