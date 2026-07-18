@@ -79,6 +79,9 @@ func _init():
 	linkedDevices = BehaviourSubject.new([] as Array[LinkedDevice])
 
 func _ready():
+	ProjectSettings.set_setting(GSConstants.PROJECT_SETTING_CLIENT_NAME, ProjectSettings.get_setting("application/config/name"))
+	ProjectSettings.set_setting(GSConstants.PROJECT_SETTING_CLIENT_VERSION, ProjectSettings.get_setting("application/config/version"))
+	
 	GSClient.client_connection_changed.connect(
 		func (isConnected: bool):
 			if (isConnected):

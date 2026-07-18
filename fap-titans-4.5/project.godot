@@ -11,6 +11,7 @@ config_version=5
 [application]
 
 config/name="Tower of Sylvara"
+config/version="1.0"
 run/main_scene="uid://caffxk2yr2nnu"
 config/features=PackedStringArray("4.5", "Forward Plus")
 config/icon="uid://b1dpec417efuq"

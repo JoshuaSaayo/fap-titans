@@ -11,6 +11,7 @@ extends Control
 @onready var display_panel: Panel = $Settings/DisplayPanel
 @onready var audio_panel: Panel = $Settings/AudioPanel
 @onready var toys_panel: Control = %ToysPanel
+@onready var version_label: Label = %VersionLabel
 
 func _ready() -> void:
 	RhythmManager.stop_game()
@@ -24,6 +25,8 @@ func _ready() -> void:
 		func ():
 			toys_panel.visible = false
 	)
+	
+	version_label.text = "v%s" % ProjectSettings.get_setting("application/config/version")
 
 func _set_ui_visible(visible: bool, nodes: Array) -> void:
 	for node in nodes:
