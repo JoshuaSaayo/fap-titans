@@ -20,9 +20,6 @@ func _process(delta):
 		spawn_note()
 		time_since_last_beat -= beat_interval
 
-func start_spawning():
-	is_spawning = true;
-
 func spawn_note():
 	var note = preload("res://main_scenes/note.tscn").instantiate()
 	
