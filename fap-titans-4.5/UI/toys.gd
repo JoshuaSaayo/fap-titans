@@ -15,6 +15,8 @@ var isConnecting: bool = false
 var isRequestingDeviceList: bool = false
 var isTesting: bool = false
 
+signal onClosePress
+
 func _ready():
 	disposeBag = ToysManager.DisposeBag.new()
 	
@@ -111,3 +113,6 @@ func on_test_press():
 	var selectedIndices: PackedInt32Array = linked_devices_list.get_selected_items()
 	for index in selectedIndices:
 		ToysManager.test_device(ToysManager.linkedDevices.get_value()[index])
+
+func on_close_press():
+	onClosePress.emit()

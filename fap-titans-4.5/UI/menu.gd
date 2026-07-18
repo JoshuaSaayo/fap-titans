@@ -10,14 +10,20 @@ extends Control
 @onready var exit: Control = $Exit
 @onready var display_panel: Panel = $Settings/DisplayPanel
 @onready var audio_panel: Panel = $Settings/AudioPanel
-
+@onready var toys_panel: Control = %ToysPanel
 
 func _ready() -> void:
 	RhythmManager.stop_game()
 	exit.visible = false
 	credits.visible = false
 	settings.visible = false
+	toys_panel.visible = false
 	_set_ui_visible(true, [start_btn, settings_btn, credits_btn, exit_btn, logo])
+	
+	toys_panel.onClosePress.connect(
+		func ():
+			toys_panel.visible = false
+	)
 
 func _set_ui_visible(visible: bool, nodes: Array) -> void:
 	for node in nodes:
@@ -27,6 +33,8 @@ func _set_ui_visible(visible: bool, nodes: Array) -> void:
 func _on_start_btn_pressed() -> void:
 	await FadeTransition.fade_to_scene("res://main_scenes/main.tscn")
 
+func _on_connect_toys_btn_pressed() -> void:
+	toys_panel.visible = true
 
 func _on_settings_btn_pressed() -> void:
 	settings.visible = true
