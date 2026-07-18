@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://dj2utacqq6dp7"]
+[gd_scene load_steps=14 format=3 uid="uid://dj2utacqq6dp7"]
 
 [ext_resource type="Script" uid="uid://k0ugdctc2fts" path="res://main_scenes/player.gd" id="1_apw8i"]
 [ext_resource type="Texture2D" uid="uid://bucltppufbg7w" path="res://assets/knight/knight_1.png" id="2_apw8i"]
@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://ckyfnwf2k2rwo" path="res://assets/knight/knight_3.png" id="4_07ovw"]
 [ext_resource type="Texture2D" uid="uid://djwk5jpr30pxq" path="res://assets/knight/knight_4.png" id="5_dgrxa"]
 [ext_resource type="AudioStream" uid="uid://b2t5tfsx2r1xp" path="res://UI/audio/574821__wesleyextreme_gamer__slash1.ogg" id="7_dgrxa"]
+[ext_resource type="Texture2D" uid="uid://cf0h52ggd1h1e" path="res://UI/assets/quit_box.png" id="8_ct10r"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_18st5"]
 animations = [{
@@ -36,11 +37,6 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="LabelSettings" id="LabelSettings_07ovw"]
-font = ExtResource("3_pgebr")
-font_size = 30
-font_color = Color(0, 0, 0, 1)
-
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_y50g6"]
 bg_color = Color(1, 1, 1, 0)
 border_width_left = 1
@@ -57,6 +53,14 @@ border_width_right = 1
 border_width_bottom = 1
 border_color = Color(0, 0, 0, 1)
 
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_wbfj1"]
+texture = ExtResource("8_ct10r")
+
+[sub_resource type="LabelSettings" id="LabelSettings_5c1sl"]
+font = ExtResource("3_pgebr")
+font_size = 40
+font_color = Color(0.9098039, 0.7764706, 0.4392157, 1)
+
 [node name="player" type="Node2D"]
 script = ExtResource("1_apw8i")
 
@@ -64,14 +68,6 @@ script = ExtResource("1_apw8i")
 sprite_frames = SubResource("SpriteFrames_18st5")
 animation = &"idle"
 autoplay = "idle"
-
-[node name="ComboLabel" type="Label" parent="."]
-offset_left = -669.0
-offset_top = 193.0
-offset_right = -550.0
-offset_bottom = 232.0
-text = "COMBO"
-label_settings = SubResource("LabelSettings_07ovw")
 
 [node name="ProgressBar" type="ProgressBar" parent="."]
 offset_left = -90.0
@@ -88,3 +84,19 @@ value = 50.0
 [node name="SlashSound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("7_dgrxa")
 bus = &"SFX"
+
+[node name="Panel" type="Panel" parent="."]
+offset_left = -703.0
+offset_top = 45.0
+offset_right = -403.0
+offset_bottom = 195.0
+theme_override_styles/panel = SubResource("StyleBoxTexture_wbfj1")
+
+[node name="ComboLabel" type="Label" parent="Panel"]
+layout_mode = 0
+offset_left = 18.0
+offset_top = 19.0
+offset_right = 142.0
+offset_bottom = 71.0
+text = "Combo"
+label_settings = SubResource("LabelSettings_5c1sl")

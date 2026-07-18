@@ -8,7 +8,7 @@ var current_hp: float = 100.0
 @onready var slash_sound: AudioStreamPlayer = $SlashSound
 
 var combo: int = 0
-@onready var combo_label = $ComboLabel
+@onready var combo_label: Label = $Panel/ComboLabel
 
 signal player_died
 signal combo_updated(new_combo)
