@@ -1,0 +1,59 @@
+[gd_resource type="Theme" load_steps=7 format=3 uid="uid://b0jh6dl10v5yh"]
+
+[ext_resource type="FontFile" uid="uid://d2564b14oyd1a" path="res://UI/fonts/IMFellEnglish-Regular.ttf" id="1_cdwdg"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cdwdg"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.9098039, 0.7764706, 0.4392157, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0rhh7"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.9098039, 0.7764706, 0.4392157, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0ikad"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(1, 1, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mcgnk"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.9098039, 0.7764706, 0.4392157, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2fjox"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(1, 1, 0, 1)
+
+[resource]
+Button/colors/font_color = Color(0.9098039, 0.7764706, 0.4392157, 1)
+Button/colors/font_disabled_color = Color(0.9098039, 0.7764706, 0.4392157, 0.50980395)
+Button/colors/font_focus_color = Color(0.9098039, 0.7764706, 0.4392157, 1)
+Button/colors/font_hover_color = Color(1, 1, 0, 1)
+Button/colors/font_hover_pressed_color = Color(1, 1, 0, 1)
+Button/colors/font_outline_color = Color(0, 0, 0, 1)
+Button/colors/font_pressed_color = Color(1, 1, 0, 1)
+Button/font_sizes/font_size = 25
+Button/fonts/font = ExtResource("1_cdwdg")
+Button/styles/disabled = SubResource("StyleBoxFlat_cdwdg")
+Button/styles/focus = SubResource("StyleBoxFlat_0rhh7")
+Button/styles/hover = SubResource("StyleBoxFlat_0ikad")
+Button/styles/normal = SubResource("StyleBoxFlat_mcgnk")
+Button/styles/pressed = SubResource("StyleBoxFlat_2fjox")

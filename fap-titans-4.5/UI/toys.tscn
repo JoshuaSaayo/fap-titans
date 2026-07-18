@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://2rnepld0e15i"]
+[gd_scene load_steps=18 format=3 uid="uid://2rnepld0e15i"]
 
 [ext_resource type="Script" uid="uid://bb13ig8pehn8v" path="res://UI/toys.gd" id="1_bddyp"]
 [ext_resource type="Texture2D" uid="uid://bi2chehrag0nh" path="res://UI/assets/panel_9patch.png" id="2_bddyp"]
@@ -6,6 +6,7 @@
 [ext_resource type="FontFile" uid="uid://ddcbng6448vj6" path="res://UI/fonts/Almendra-Bold.ttf" id="3_kpid8"]
 [ext_resource type="FontFile" uid="uid://d2564b14oyd1a" path="res://UI/fonts/IMFellEnglish-Regular.ttf" id="4_2hs67"]
 [ext_resource type="Texture2D" uid="uid://34vp1ex7ngvh" path="res://UI/assets/close_hover.png" id="4_kpid8"]
+[ext_resource type="Theme" uid="uid://b0jh6dl10v5yh" path="res://UI/button_theme.tres" id="5_gx8pw"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_fg2mh"]
 font = ExtResource("3_kpid8")
@@ -138,6 +139,7 @@ unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 4
+theme_override_fonts/font = ExtResource("4_2hs67")
 theme_override_font_sizes/font_size = 25
 text = "127.0.0.1"
 
@@ -157,6 +159,7 @@ unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 4
+theme_override_fonts/font = ExtResource("4_2hs67")
 theme_override_font_sizes/font_size = 25
 text = "12345"
 
@@ -164,7 +167,7 @@ text = "12345"
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 4
-theme_override_font_sizes/font_size = 25
+theme = ExtResource("5_gx8pw")
 text = "Connect"
 
 [node name="ServerPanel" type="PanelContainer" parent="Control/VBoxContainer"]
@@ -217,18 +220,22 @@ horizontal_alignment = 2
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 3
+theme_override_fonts/font = ExtResource("4_2hs67")
 
 [node name="Button3" type="Button" parent="Control/VBoxContainer/ServerPanel/VBoxContainer/HBoxContainer/VBoxContainer"]
 layout_mode = 2
+theme = ExtResource("5_gx8pw")
 text = "Link selected device"
 
 [node name="Button" type="Button" parent="Control/VBoxContainer/ServerPanel/VBoxContainer/HBoxContainer/VBoxContainer"]
 layout_mode = 2
+theme = ExtResource("5_gx8pw")
 disabled = true
 text = "Request device list"
 
 [node name="Button2" type="Button" parent="Control/VBoxContainer/ServerPanel/VBoxContainer/HBoxContainer/VBoxContainer"]
 layout_mode = 2
+theme = ExtResource("5_gx8pw")
 disabled = true
 text = "Re-scan devices"
 
@@ -248,19 +255,23 @@ horizontal_alignment = 2
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 3
+theme_override_fonts/font = ExtResource("4_2hs67")
 
 [node name="Button" type="Button" parent="Control/VBoxContainer/ServerPanel/VBoxContainer/HBoxContainer/VBoxContainer2"]
 layout_mode = 2
+theme = ExtResource("5_gx8pw")
 text = "Unlink selected device"
 
 [node name="Button2" type="Button" parent="Control/VBoxContainer/ServerPanel/VBoxContainer/HBoxContainer/VBoxContainer2"]
 layout_mode = 2
+theme = ExtResource("5_gx8pw")
 text = "Test selected device"
 
 [node name="Button3" type="Button" parent="Control/VBoxContainer/ServerPanel/VBoxContainer/HBoxContainer/VBoxContainer2"]
 modulate = Color(1, 1, 1, 0)
 layout_mode = 2
 focus_mode = 0
+theme = ExtResource("5_gx8pw")
 disabled = true
 text = " "
 
