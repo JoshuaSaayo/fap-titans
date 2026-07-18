@@ -46,6 +46,7 @@ position = Vector2(740, 384)
 [node name="MainBG" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("8_rn820")
 autoplay = true
+bus = &"Music"
 
 [node name="UILayer" type="CanvasLayer" parent="."]
 

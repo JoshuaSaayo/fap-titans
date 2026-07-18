@@ -87,3 +87,4 @@ value = 50.0
 
 [node name="SlashSound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("7_dgrxa")
+bus = &"SFX"

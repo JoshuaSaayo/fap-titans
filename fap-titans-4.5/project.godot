@@ -23,6 +23,8 @@ PlayerManager="*res://autoload/player_manager.gd"
 MonsterManager="*res://autoload/monster_manager.gd"
 FadeTransition="*res://autoload/fade_transition.tscn"
 PauseManager="*res://autoload/pause_manager.gd"
+GlobalModulate="*res://autoload/global_modulate.tscn"
+AudioManager="*res://autoload/audio_manager.gd"
 
 [display]
 

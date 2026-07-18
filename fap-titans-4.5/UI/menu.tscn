@@ -1,4 +1,4 @@
-[gd_scene load_steps=100 format=3 uid="uid://cbgkrnpa2ypg8"]
+[gd_scene load_steps=103 format=3 uid="uid://cbgkrnpa2ypg8"]
 
 [ext_resource type="Texture2D" uid="uid://fdatsuj7mpp7" path="res://UI/assets/main_menu.png" id="1_4hkxj"]
 [ext_resource type="Script" uid="uid://fflsck3v0lyl" path="res://UI/menu.gd" id="1_wh1w0"]
@@ -18,6 +18,7 @@
 [ext_resource type="FontFile" uid="uid://ddcbng6448vj6" path="res://UI/fonts/Almendra-Bold.ttf" id="13_22gd7"]
 [ext_resource type="Texture2D" uid="uid://djlgmowgoog5f" path="res://UI/assets/checked.png" id="14_60j7a"]
 [ext_resource type="Texture2D" uid="uid://qeoqk62sxe1i" path="res://UI/assets/unchecked.png" id="15_k0tp0"]
+[ext_resource type="Script" uid="uid://dfimc3klm0ttc" path="res://UI/display_panel.gd" id="16_6e708"]
 [ext_resource type="Texture2D" uid="uid://covd3y601a0ta" path="res://UI/assets/grabber.png" id="16_emkvv"]
 [ext_resource type="Texture2D" uid="uid://c55s6nvfidi71" path="res://UI/assets/menu_button.png" id="17_xbecv"]
 [ext_resource type="Texture2D" uid="uid://bncd1blv4tvsj" path="res://UI/assets/restore_btn.png" id="18_5ccw6"]
@@ -27,7 +28,9 @@
 [ext_resource type="Texture2D" uid="uid://crh7nsfuh35on" path="res://UI/assets/display.png" id="20_gkf6b"]
 [ext_resource type="Texture2D" uid="uid://cjixi5nhf357r" path="res://UI/assets/display_hover.png" id="21_cbyaf"]
 [ext_resource type="Texture2D" uid="uid://c48xsf0vlqyfo" path="res://UI/assets/audio.png" id="22_5ccw6"]
+[ext_resource type="Script" uid="uid://2pktcxpbh6xi" path="res://UI/menu_button.gd" id="22_f6stn"]
 [ext_resource type="Texture2D" uid="uid://cfesjf7umgcia" path="res://UI/assets/audio_hover.png" id="23_3lojv"]
+[ext_resource type="Script" uid="uid://7x5hhotcv1id" path="res://UI/audio_panel.gd" id="24_34ae0"]
 [ext_resource type="Texture2D" uid="uid://cf0h52ggd1h1e" path="res://UI/assets/quit_box.png" id="26_3lojv"]
 [ext_resource type="Texture2D" uid="uid://ct8o3bytbkftu" path="res://UI/assets/disclaimer_box.png" id="26_qclgv"]
 [ext_resource type="AudioStream" uid="uid://d3wur0belrt5c" path="res://UI/audio/683938__waxsocks__realm-of-adventure.mp3" id="29_6m7h8"]
@@ -361,7 +364,6 @@ text = "v1.0"
 label_settings = SubResource("LabelSettings_1qvof")
 
 [node name="Settings" type="Control" parent="."]
-visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -383,6 +385,7 @@ offset_bottom = 253.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxTexture_3lojv")
+script = ExtResource("16_6e708")
 
 [node name="DisplayLabel" type="Label" parent="Settings/DisplayPanel"]
 layout_mode = 1
@@ -526,6 +529,9 @@ theme_override_icons/tick = ExtResource("16_emkvv")
 theme_override_styles/slider = SubResource("StyleBoxFlat_k0tp0")
 theme_override_styles/grabber_area = SubResource("StyleBoxFlat_xbecv")
 theme_override_styles/grabber_area_highlight = SubResource("StyleBoxFlat_emkvv")
+max_value = 1.0
+step = 0.1
+value = 0.5
 
 [node name="Resolution" type="Label" parent="Settings/DisplayPanel"]
 layout_mode = 1
@@ -547,6 +553,16 @@ offset_top = 5.0
 offset_right = 242.0
 offset_bottom = 45.0
 theme_override_icons/icon = ExtResource("17_xbecv")
+item_count = 4
+popup/item_0/text = "1280x720"
+popup/item_0/id = 0
+popup/item_1/text = "1152×648"
+popup/item_1/id = 1
+popup/item_2/text = "800×450"
+popup/item_2/id = 2
+popup/item_3/text = "640×360"
+popup/item_3/id = 3
+script = ExtResource("22_f6stn")
 
 [node name="RestoreBtn" type="Button" parent="Settings/DisplayPanel"]
 layout_mode = 1
@@ -568,6 +584,7 @@ theme_override_styles/disabled = SubResource("StyleBoxTexture_enxwy")
 theme_override_styles/focus = SubResource("StyleBoxTexture_mw0eg")
 
 [node name="AudioPanel" type="Panel" parent="Settings"]
+visible = false
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -581,6 +598,7 @@ offset_bottom = 253.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxTexture_3lojv")
+script = ExtResource("24_34ae0")
 
 [node name="AudioLabel" type="Label" parent="Settings/AudioPanel"]
 layout_mode = 1
@@ -911,6 +929,7 @@ text = "NO"
 [node name="MenuBG" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("29_6m7h8")
 autoplay = true
+bus = &"Music"
 
 [connection signal="pressed" from="StartBtn" to="." method="_on_start_btn_pressed"]
 [connection signal="pressed" from="SettingsBtn" to="." method="_on_settings_btn_pressed"]
