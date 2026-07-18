@@ -1,7 +1,7 @@
 extends Node2D
 
-@export var max_hp: float = 100.0
-var current_hp: float = 100.0
+@export var max_hp: float = 250.0
+var current_hp: float = 250.0
 
 @onready var spine: SpineSprite = $MinervaSpine
 @onready var hp_bar = $ProgressBar
