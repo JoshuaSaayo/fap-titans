@@ -19,8 +19,7 @@ func _ready():
 func _process(delta):
 	# Game Over Check
 	if player.current_hp <= 0:
-		print("Game Over - Player Defeated")
-		get_tree().paused = true
+		get_tree().change_scene_to_file("res://UI/game_over.tscn")
 	
 	if monster.current_hp <= 0:
 		get_tree().change_scene_to_file("res://animations/scenes/minerva_ls.tscn")

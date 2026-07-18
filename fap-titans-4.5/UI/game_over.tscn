@@ -1,0 +1,135 @@
+[gd_scene load_steps=12 format=3 uid="uid://cp3nig6fygpds"]
+
+[ext_resource type="FontFile" uid="uid://ddcbng6448vj6" path="res://UI/fonts/Almendra-Bold.ttf" id="1_jawqf"]
+[ext_resource type="Script" uid="uid://p7jvbm2wicas" path="res://UI/game_over.gd" id="1_phit2"]
+[ext_resource type="Texture2D" uid="uid://cf0h52ggd1h1e" path="res://UI/assets/quit_box.png" id="2_fmr02"]
+[ext_resource type="FontFile" uid="uid://d2564b14oyd1a" path="res://UI/fonts/IMFellEnglish-Regular.ttf" id="3_jwcg4"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_jk1to"]
+texture = ExtResource("2_fmr02")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bpgl0"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fy7qq"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0m8h5"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cp6d1"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fasss"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="LabelSettings" id="LabelSettings_5wsev"]
+font = ExtResource("1_jawqf")
+font_size = 60
+font_color = Color(0.9098039, 0.7764706, 0.4392157, 1)
+shadow_size = 2
+shadow_color = Color(0, 0, 0, 1)
+
+[node name="game_over" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_phit2")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="QuitPanel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -273.0
+offset_top = -124.5
+offset_right = 273.0
+offset_bottom = 124.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_jk1to")
+
+[node name="RestartBtn" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 419.0
+offset_top = -316.0
+offset_right = 476.0
+offset_bottom = -277.0
+grow_vertical = 0
+theme_override_colors/font_color = Color(0.9098039, 0.7764706, 0.4392157, 1)
+theme_override_colors/font_focus_color = Color(0.9098039, 0.7764706, 0.4392157, 1)
+theme_override_colors/font_pressed_color = Color(1, 1, 0, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 0, 1)
+theme_override_colors/font_hover_pressed_color = Color(1, 1, 0, 1)
+theme_override_colors/font_disabled_color = Color(0.8745098, 0.8745098, 0.8745098, 0)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 0)
+theme_override_fonts/font = ExtResource("3_jwcg4")
+theme_override_font_sizes/font_size = 30
+theme_override_styles/normal = SubResource("StyleBoxFlat_bpgl0")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_fy7qq")
+theme_override_styles/hover = SubResource("StyleBoxFlat_0m8h5")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_cp6d1")
+theme_override_styles/focus = SubResource("StyleBoxFlat_fasss")
+text = "RESTART"
+
+[node name="MainMenu" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -474.0
+offset_top = -316.0
+offset_right = -417.0
+offset_bottom = -277.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_colors/font_color = Color(0.9098039, 0.7764706, 0.4392157, 1)
+theme_override_colors/font_focus_color = Color(0.9098039, 0.7764706, 0.4392157, 1)
+theme_override_colors/font_pressed_color = Color(1, 1, 0, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 0, 1)
+theme_override_colors/font_hover_pressed_color = Color(1, 1, 0, 1)
+theme_override_colors/font_disabled_color = Color(0.8745098, 0.8745098, 0.8745098, 0)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 0)
+theme_override_fonts/font = ExtResource("3_jwcg4")
+theme_override_font_sizes/font_size = 30
+theme_override_styles/normal = SubResource("StyleBoxFlat_bpgl0")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_fy7qq")
+theme_override_styles/hover = SubResource("StyleBoxFlat_0m8h5")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_cp6d1")
+theme_override_styles/focus = SubResource("StyleBoxFlat_fasss")
+text = "MAIN MENU"
+
+[node name="ReasonLabel" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -154.0
+offset_top = 254.0
+offset_right = 157.0
+offset_bottom = 333.0
+grow_horizontal = 2
+text = "GAME OVER"
+label_settings = SubResource("LabelSettings_5wsev")
+
+[connection signal="pressed" from="RestartBtn" to="." method="_on_restart_btn_pressed"]
+[connection signal="pressed" from="MainMenu" to="." method="_on_main_menu_pressed"]
