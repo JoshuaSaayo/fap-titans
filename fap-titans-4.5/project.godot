@@ -26,6 +26,7 @@ PauseManager="*res://autoload/pause_manager.gd"
 GlobalModulate="*res://autoload/global_modulate.tscn"
 AudioManager="*res://autoload/audio_manager.gd"
 GSClient="*res://addons/gspot/gsclient.gd"
+ToysManager="*res://autoload/toys_manager.gd"
 
 [display]
 
