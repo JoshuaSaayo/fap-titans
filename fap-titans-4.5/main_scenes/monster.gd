@@ -21,7 +21,7 @@ func play_idle_animation():
 	spine.get_animation_state().set_animation("animation", true, 0)
 
 func take_damage(amount: float):
-	current_hp = clamp(current_hp - 1.1, 0, max_hp)
+	current_hp = clamp(current_hp - amount, 0, max_hp)
 	update_hp_ui()
 	check_and_change_phase()
 

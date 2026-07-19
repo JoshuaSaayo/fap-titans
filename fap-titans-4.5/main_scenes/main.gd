@@ -126,12 +126,14 @@ func _input(event):
 
 func _process(_delta):
 	if player.current_hp <= 0:
+		ToysManager.reset()
 		get_tree().change_scene_to_file("res://UI/game_over.tscn")
 		return
 
 	if monster.current_hp <= 0 and !outro_started:
 		outro_started = true
 		main_bg.stop()
+		ToysManager.reset()
 		show_dialogue("minerva", "outro")
 		return
 	

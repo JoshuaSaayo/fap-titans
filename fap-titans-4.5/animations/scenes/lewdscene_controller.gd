@@ -18,6 +18,7 @@ var loops_done: int = 0
 
 func _ready() -> void:
 	RhythmManager.stop_game()
+	ToysManager.start_lewd()
 	spine_sprite.get_animation_state().set_animation("lewdscene", true, 0)
 	spine_sprite.animation_completed.connect(_on_animation_completed)
 	# Connect to the Sprite's signal, not the AnimationState's
@@ -29,6 +30,7 @@ func _on_animation_completed(_spine, _state, track_entry):
 			loops_done += 1
 			if loops_done >= LOOP_COUNT:
 				spine_sprite.get_animation_state().set_animation("climax", false, 0)
+				ToysManager.start_climax()
 
 		"climax":
 			if preview_mode:
@@ -41,6 +43,7 @@ func climax_finished():
 	# Go to ending scene
 	await get_tree().create_timer(1.0).timeout  # Small delay for better feel
 	FadeTransition.fade_to_scene("res://UI/end_transition.tscn")
+	ToysManager.reset()
 
 func _on_pause_btn_pressed() -> void:
 	if PauseManager.is_paused: 

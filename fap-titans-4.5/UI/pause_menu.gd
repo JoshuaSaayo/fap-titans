@@ -21,6 +21,7 @@ func _on_main_menu_btn_pressed() -> void:
 func _on_confirm_btn_pressed() -> void:
 	PauseManager.is_paused = false
 	get_tree().paused = false
+	ToysManager.reset()
 	await FadeTransition.fade_to_scene("res://UI/menu.tscn")
 
 

@@ -19,6 +19,10 @@ func reset_combo():
 	if player:
 		player.reset_combo()
 
+func get_combo():
+	if player:
+		return player.combo
+
 func get_combo_multiplier() -> float:
 	if player:
 		return player.get_combo_multiplier()

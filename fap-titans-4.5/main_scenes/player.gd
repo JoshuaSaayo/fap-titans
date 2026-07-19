@@ -61,6 +61,9 @@ func update_combo_ui():
 		else:
 			combo_label.visible = false
 
+func get_combo():
+	return combo
+
 func get_combo_multiplier() -> float:
 	return 1.0 + (combo * 0.05)  # +5% damage per combo
 

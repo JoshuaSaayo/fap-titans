@@ -122,6 +122,7 @@ func spawn_note(beat_number: int):
 # Keep your other functions unchanged
 func register_hit(accuracy: String = "perfect"):
 	var damage = 1.0
+	damage += clamp(float(PlayerManager.get_combo()) * 0.02, 0, 0.1)
 	#if accuracy == "perfect":
 		#damage = 10.0
 	#elif accuracy == "good":
@@ -153,7 +154,7 @@ func update_with_music_position(music_position: float):
 	
 	var beatPosition = music_position - firstBeatPosition
 	
-	ToysManager.update_for_music(beatPosition, beatDelta, 0)
+	ToysManager.update_for_music(beatPosition, beatDelta, PlayerManager.get_combo())
 	
 	var beatSpawnPosition = beatPosition + noteLifetime
 	var beatNumber = int(floor(beatSpawnPosition / beatDelta))

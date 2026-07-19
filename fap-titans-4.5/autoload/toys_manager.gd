@@ -70,6 +70,18 @@ var vibrationLevel: BehaviourSubject
 var did_call_devices_lambda: bool
 var devices_labda: Callable
 var time: float = 0
+
+var base_level_start: float = 0
+var base_level: float = 0
+var target_base_level: float = 0
+
+var peak_combo = 0
+var peak_combo2 = 0
+
+var prev_combo_level: int = 0
+var is_lewd: bool = false
+var is_climaxing: bool = false
+
 signal showError(message: String)
 
 func _init():
@@ -198,7 +210,20 @@ func set_all_vibration_level(level: float):
 	for device: GSDevice in devicesToCommand:
 		device.vibrate(level)
 
-#func _process(delta: float) -> void:
+func _process(delta: float) -> void:
+	if (is_lewd):
+		time += delta
+		var level = 0.7 + 0.3 * (sin(time * PI * 2.6) + 1) / 2
+		vibrationLevel.setValue(level)
+		set_all_vibration_level(level)
+		return
+	
+	if (abs(base_level - target_base_level) > 0.01):
+		var level_delta = target_base_level - base_level_start
+		base_level = base_level + level_delta * delta
+		if ((level_delta > 0 && base_level > target_base_level) || (level_delta < 0 && base_level < target_base_level)):
+			base_level = target_base_level
+	
 	#time += delta * PI * 2
 	#if (time > PI * 2):
 		#time -= PI * 2
@@ -206,6 +231,17 @@ func set_all_vibration_level(level: float):
 	#var level = (sin(time) + 1) / 2
 	#vibrationLevel.setValue(level)
 	#set_all_vibration_level(level)
+
+func reset():
+	target_base_level = 0
+	base_level = 0
+	base_level_start = 0
+	peak_combo = 0
+	is_lewd = false
+	is_climaxing = false
+	time = 0
+	vibrationLevel.setValue(0)
+	set_all_vibration_level(0)
 
 func update_for_music(position: float, beatDelta: float, combo: int):
 	var tick1Delta = beatDelta * 4
@@ -219,18 +255,44 @@ func update_for_music(position: float, beatDelta: float, combo: int):
 	var closestBeat3 = int(round(tick3Position / tick1Delta))
 	var delta3 = tick3Position - closestBeat3 * tick1Delta
 	
+	level = base_level
+
+	#0 1 2 3  4 5 6 7 8
+
+	if (combo >= 4 && combo <= 8 && combo != prev_combo_level):
+		base_level_start = base_level
+		target_base_level = 0.1 * (combo - 3)
+		
+	if (combo < 4 && combo != prev_combo_level):
+		base_level_start = base_level
+		target_base_level = 0
+	
 	if (position < -minDelta):
-		level = 0
+		pass
 	else:
 		if (abs(delta) <= minDelta):
-			var progression = 1 - abs(delta / minDelta)
-			level = baseLevel + progression * (0.1 * clamp(combo + 1, 0, 5))
-		elif (abs(delta3) <= minDelta):
-			var progression = 1 - abs(delta3 / minDelta)
-			level = baseLevel + progression * (0.1 * clamp(combo - 9, 0, 5))
+			var progression = clamp(1 - abs(delta / minDelta), 0, 1)
+			level += sqrt(progression) * (0.1 * clamp(peak_combo + 1, 0, 5))
 		else:
-			level = baseLevel
+			peak_combo = combo
+		if (abs(delta3) <= minDelta):
+			var progression = clamp(1 - abs(delta3 / minDelta), 0, 1)
+			level += sqrt(progression) * (0.1 * clamp(peak_combo2 - 9, 0, 5))
+		else:
+			peak_combo2 = combo
 	
 	var clampedLevel = clamp(level, 0, 1)
 	vibrationLevel.setValue(clampedLevel)
 	set_all_vibration_level(clampedLevel)
+
+	prev_combo_level = combo
+
+func start_lewd():
+	time = 0
+	is_lewd = true
+
+func start_climax():
+	is_lewd = false
+	is_climaxing = true
+	vibrationLevel.setValue(1)
+	set_all_vibration_level(1)
