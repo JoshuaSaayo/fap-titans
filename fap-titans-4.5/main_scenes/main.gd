@@ -91,13 +91,15 @@ func end_dialogue():
 
 	if has_triggered_victory:
 		return
-
+	
+	main_bg.stop()
+	
 	if scene_changed:
 		return
 
 	scene_changed = true
 	
-	main_bg.stop()
+	
 	
 	print("✅ Outro finished → Loading Lewd Scene in 1 second...")
 
@@ -129,6 +131,7 @@ func _process(_delta):
 
 	if monster.current_hp <= 0 and !outro_started:
 		outro_started = true
+		main_bg.stop()
 		show_dialogue("minerva", "outro")
 		return
 	
