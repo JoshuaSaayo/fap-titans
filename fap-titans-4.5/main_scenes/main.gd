@@ -126,3 +126,13 @@ func _process(_delta):
 	if monster.current_hp <= 0 and !outro_started:
 		outro_started = true
 		show_dialogue("minerva", "outro")
+
+
+func _on_pause_btn_pressed() -> void:
+	if PauseManager.is_paused: 
+		return
+	
+	PauseManager.toggle_pause()
+	
+	var pause_menu = load("res://UI/pause_menu.tscn").instantiate()
+	$UILayer.add_child(pause_menu)   # ← Add to CanvasLayer instead
