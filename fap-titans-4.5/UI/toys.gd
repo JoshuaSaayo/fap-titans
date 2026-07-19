@@ -9,6 +9,9 @@ extends Control
 @onready var server_name_label = %ServerNameLabel
 @onready var available_devices_list = %AvailableDevicesList
 @onready var linked_devices_list = %LinkedDevicesList
+@onready var message_overlay = %MessageOverlay
+@onready var message_label = %MessageLabel
+@onready var test_button = %TestButton
 
 var disposeBag: ToysManager.DisposeBag
 var isConnecting: bool = false
@@ -18,6 +21,8 @@ var isTesting: bool = false
 signal onClosePress
 
 func _ready():
+	message_overlay.visible = false
+	
 	disposeBag = ToysManager.DisposeBag.new()
 	
 	ToysManager.isConnecting.listen(
@@ -76,7 +81,11 @@ func _exit_tree():
 	disposeBag = null
 	
 func show_error(message: String):
-	OS.alert(message)
+	message_label.text = message
+	message_overlay.visible = true
+
+func on_continue_press():
+	message_overlay.visible = false
 
 func update_loading_overlay():
 	if (isConnecting):
@@ -92,6 +101,7 @@ func update_loading_overlay():
 		loading_overlay.visible = false
 
 func on_connect_press():
+	connect_button.release_focus()
 	if (ToysManager.connectedServer.get_value() == null):
 		var host = host_line_edit.text.lstrip(" ").rstrip(" ")
 		var port = port_line_edit.text.lstrip(" ").rstrip(" ")
@@ -117,6 +127,7 @@ func on_unlink_press():
 		ToysManager.unlink_device(ToysManager.linkedDevices.get_value()[index])
 
 func on_test_press():
+	test_button.release_focus()
 	var selectedIndices: PackedInt32Array = linked_devices_list.get_selected_items()
 	for index in selectedIndices:
 		ToysManager.test_device(ToysManager.linkedDevices.get_value()[index])

@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://2rnepld0e15i"]
+[gd_scene load_steps=23 format=3 uid="uid://2rnepld0e15i"]
 
 [ext_resource type="Script" uid="uid://bb13ig8pehn8v" path="res://UI/toys.gd" id="1_bddyp"]
 [ext_resource type="Texture2D" uid="uid://bi2chehrag0nh" path="res://UI/assets/panel_9patch.png" id="2_bddyp"]
@@ -46,6 +46,21 @@ texture = ExtResource("3_jrket")
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_44x65"]
 texture = ExtResource("3_jrket")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ptbdh"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pb3sw"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ttksi"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rftgk"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8im2h"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
 
 [node name="Toys" type="Control"]
 layout_mode = 3
@@ -262,7 +277,8 @@ layout_mode = 2
 theme = ExtResource("5_gx8pw")
 text = "Unlink selected device"
 
-[node name="Button2" type="Button" parent="Control/VBoxContainer/ServerPanel/VBoxContainer/HBoxContainer/VBoxContainer2"]
+[node name="TestButton" type="Button" parent="Control/VBoxContainer/ServerPanel/VBoxContainer/HBoxContainer/VBoxContainer2"]
+unique_name_in_owner = true
 layout_mode = 2
 theme = ExtResource("5_gx8pw")
 text = "Test selected device"
@@ -320,8 +336,93 @@ size_flags_horizontal = 4
 text = "Connecting..."
 label_settings = SubResource("LabelSettings_je6km")
 
+[node name="MessageOverlay" type="ColorRect" parent="."]
+unique_name_in_owner = true
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.8)
+
+[node name="Control" type="Control" parent="MessageOverlay"]
+custom_minimum_size = Vector2(500, 200)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="NinePatchRect" type="NinePatchRect" parent="MessageOverlay/Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_bddyp")
+patch_margin_left = 28
+patch_margin_top = 28
+patch_margin_right = 28
+patch_margin_bottom = 28
+
+[node name="MessageLabel" type="Label" parent="MessageOverlay/Control/NinePatchRect"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+offset_left = 16.0
+offset_top = 16.0
+offset_right = -16.0
+offset_bottom = 68.0
+grow_horizontal = 2
+size_flags_horizontal = 4
+text = "Message"
+label_settings = SubResource("LabelSettings_je6km")
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="ContinueButton" type="Button" parent="MessageOverlay/Control/NinePatchRect"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -77.5
+offset_top = -59.0
+offset_right = 77.5
+offset_bottom = -20.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_colors/font_color = Color(0.9098039, 0.7764706, 0.4392157, 1)
+theme_override_colors/font_focus_color = Color(0.9098039, 0.7764706, 0.4392157, 1)
+theme_override_colors/font_pressed_color = Color(1, 1, 0, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 0, 1)
+theme_override_colors/font_hover_pressed_color = Color(1, 1, 0, 1)
+theme_override_colors/font_disabled_color = Color(0.8745098, 0.8745098, 0.8745098, 0)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 0)
+theme_override_fonts/font = ExtResource("4_2hs67")
+theme_override_font_sizes/font_size = 30
+theme_override_styles/normal = SubResource("StyleBoxFlat_ptbdh")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_pb3sw")
+theme_override_styles/hover = SubResource("StyleBoxFlat_ttksi")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_rftgk")
+theme_override_styles/focus = SubResource("StyleBoxFlat_8im2h")
+text = "CONTINUE"
+
 [connection signal="pressed" from="Control/VBoxContainer/PanelContainer/VBoxContainer/ConnectButton" to="." method="on_connect_press"]
 [connection signal="pressed" from="Control/VBoxContainer/ServerPanel/VBoxContainer/HBoxContainer/VBoxContainer/Button3" to="." method="on_link_press"]
 [connection signal="pressed" from="Control/VBoxContainer/ServerPanel/VBoxContainer/HBoxContainer/VBoxContainer2/Button" to="." method="on_unlink_press"]
-[connection signal="pressed" from="Control/VBoxContainer/ServerPanel/VBoxContainer/HBoxContainer/VBoxContainer2/Button2" to="." method="on_test_press"]
+[connection signal="pressed" from="Control/VBoxContainer/ServerPanel/VBoxContainer/HBoxContainer/VBoxContainer2/TestButton" to="." method="on_test_press"]
 [connection signal="pressed" from="Control/CreditsCloseBtn" to="." method="on_close_press"]
+[connection signal="pressed" from="MessageOverlay/Control/NinePatchRect/ContinueButton" to="." method="on_continue_press"]

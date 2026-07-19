@@ -147,6 +147,11 @@ func on_server_error():
 	showError.emit("Server error")
 
 func link_device(device: GSDevice):
+	var feature: GSFeature = device.get_feature_by_actuator_type(GSActuatorType.VIBRATE)
+	if not feature:
+		showError.emit("This device doesn't have vibration feature")
+		return
+	
 	var currentList: Array[LinkedDevice] = linkedDevices.get_value()
 	if (currentList.any(
 		func (linkedDevice: LinkedDevice):
