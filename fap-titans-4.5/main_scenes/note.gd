@@ -1,7 +1,7 @@
 extends Area2D
 
 @export var lifetime: float = 2.0      # Total time the note exists
-@export var fade_in_time: float = 0.6  # Time to go from 0% to 100% opacity
+@export var fade_in_time: float = 0.4  # Time to go from 0% to 100% opacity
 
 var time_left: float = 0.0
 var is_hit: bool = false
@@ -9,6 +9,8 @@ var is_missed: bool = false
 var is_tappable: bool = false
 
 @onready var sprite = $Sprite2D          # Make sure you have a Sprite2D as child
+
+signal on_free
 
 func _ready():
 	time_left = lifetime
@@ -41,6 +43,7 @@ func miss_note():
 	if not is_hit and not is_missed:
 		is_missed = true
 		RhythmManager.register_miss()
+		on_free.emit()
 		queue_free()
 
 # === Click / Tap Handling ===
@@ -64,6 +67,7 @@ func hit_success():
 			PlayerManager.player.play_slash_animation() # ← Already had this
 		
 		JudgmentManager.judge_stationary_note(self, self.time_left)
+		on_free.emit()
 		queue_free()
 
 func spawn_hit_effect():
@@ -75,4 +79,5 @@ func spawn_hit_effect():
 	
 	# Auto free after lifetime
 	await get_tree().create_timer(1.0).timeout
+	on_free.emit()
 	effect.queue_free()

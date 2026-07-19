@@ -130,7 +130,10 @@ func _process(_delta):
 	if monster.current_hp <= 0 and !outro_started:
 		outro_started = true
 		show_dialogue("minerva", "outro")
-
+		return
+	
+	var music_position = main_bg.get_playback_position()
+	RhythmManager.update_with_music_position(music_position)
 
 func _on_pause_btn_pressed() -> void:
 	if PauseManager.is_paused: 

@@ -7,7 +7,7 @@ func _input(event):
 	if event is InputEventScreenTouch or (event is InputEventKey and event.pressed):
 		if event is InputEventKey and event.keycode not in [KEY_SPACE, KEY_Z, KEY_J]:
 			return
-		attempt_hit(event.position if event is InputEventScreenTouch else null)
+		#attempt_hit(event.position if event is InputEventScreenTouch else null)
 
 func attempt_hit(touch_pos = null):
 	var notes = get_tree().get_nodes_in_group("notes")
