@@ -4,6 +4,7 @@ extends Node2D
 @onready var player: Node2D = $player
 @onready var dialogue_box: Panel = $dialogue_box
 @onready var dialogue_label: Label = $dialogue_box/DialogueLabel
+@onready var main_bg: AudioStreamPlayer = $MainBG
 
 var dialogue_data := {}
 var current_dialogue: Array = []
@@ -81,6 +82,7 @@ func end_dialogue():
 	dialogue_box.hide()
 	is_in_dialogue = false
 	current_dialogue.clear()
+	main_bg.play()
 
 	if monster.current_hp > 0:
 		print("Intro finished → Starting rhythm")
