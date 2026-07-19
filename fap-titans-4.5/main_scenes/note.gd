@@ -11,6 +11,9 @@ var is_tappable: bool = false
 @onready var sprite = $Sprite2D          # Make sure you have a Sprite2D as child
 
 func _ready():
+	var shape = $CollisionShape2D.shape
+	if shape is CircleShape2D:
+		shape.radius = 70   # Bigger hitbox for fingers
 	time_left = lifetime
 	add_to_group("notes")
 	input_pickable = true
@@ -44,12 +47,17 @@ func miss_note():
 		queue_free()
 
 # === Click / Tap Handling ===
-func _input_event(viewport, event, shape_idx):
-	if not is_tappable or is_hit or is_missed: 
+func _input_event(_viewport, event, _shape_idx):
+	if !is_tappable or is_hit or is_missed:
 		return
-	
-	if event is InputEventMouseButton and event.pressed and event.button_index == MOUSE_BUTTON_LEFT:
-		get_viewport().set_input_as_handled()
+
+	if event is InputEventMouseButton \
+	and event.pressed \
+	and event.button_index == MOUSE_BUTTON_LEFT:
+		hit_success()
+
+	elif event is InputEventScreenTouch \
+	and event.pressed:
 		hit_success()
 
 func hit_success():

@@ -28,6 +28,10 @@ func _ready() -> void:
 	
 	version_label.text = "v%s" % ProjectSettings.get_setting("application/config/version")
 
+func _input(event):
+	if event is InputEventScreenTouch:
+		print("Touch detected:", event.position)
+
 func _set_ui_visible(visible: bool, nodes: Array) -> void:
 	for node in nodes:
 		node.visible = visible

@@ -4,21 +4,20 @@ extends Node
 @export var good_window: float = 0.25
 
 func _input(event):
-	if event is InputEventScreenTouch or (event is InputEventKey and event.pressed):
-		if event is InputEventKey and event.keycode not in [KEY_SPACE, KEY_Z, KEY_J]:
-			return
-		attempt_hit(event.position if event is InputEventScreenTouch else null)
+	if event is InputEventScreenTouch and event.pressed:
+		attempt_hit(event.position)
+	elif event is InputEventMouseButton and event.pressed and event.button_index == MOUSE_BUTTON_LEFT:
+		attempt_hit(event.position)
 
-func attempt_hit(touch_pos = null):
+func attempt_hit(touch_pos):
 	var notes = get_tree().get_nodes_in_group("notes")
 	for note in notes:
-		if note.is_hit: continue
+		if note.is_hit or not note.is_tappable:
+			continue
 		
-		var distance = note.global_position.distance_to(touch_pos) if touch_pos != null else 0
-		
-		if touch_pos == null or distance < 120:   # Click/Tap within range
-			var timing = note.time_left
-			judge_stationary_note(note, timing)
+		var distance = note.global_position.distance_to(touch_pos)
+		if distance < 130:   # Slightly bigger touch area for mobile
+			judge_stationary_note(note, note.time_left)
 			return
 
 # FIXED: Now accepts 2 arguments
