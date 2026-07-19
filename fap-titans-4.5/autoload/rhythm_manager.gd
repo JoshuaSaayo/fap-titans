@@ -30,7 +30,7 @@ var stage3To = 127
 var stage4From = 128
 var stage4To = 223
 
-var visibleNotes: Array[Node] = []
+var prevSpawnPoint: Vector2 = Vector2(0, 0)
 
 func _ready():
 	beat_interval = 60.0 / bpm
@@ -69,11 +69,15 @@ func spawn_note(beat_number: int):
 	var center_y = 280
 	var min_distance = 100
 	
+	var visibleNotes = get_tree().get_nodes_in_group("notes")
 	var options: Array[Vector2]
 	while options.size() < 3:
 		var random_x = center_x + randf_range(-spawn_width/2, spawn_width/2)
 		var random_y = center_y + randf_range(-spawn_height/2, spawn_height/2)
 		var random_v = Vector2(random_x, random_y)
+		
+		if (prevSpawnPoint.distance_to(random_v) < min_distance):
+			continue
 		
 		var hasIntersection = visibleNotes.any(
 			func (visibleNote: Node):
@@ -101,8 +105,9 @@ func spawn_note(beat_number: int):
 			return minDistanceA < minDistanceB
 	)
 	
+	var position = options[0]
 	note.lifetime = noteLifetime
-	note.position = options[0]
+	note.position = position
 	note.on_free.connect(
 		func ():
 			visibleNotes = visibleNotes.filter(
@@ -111,7 +116,8 @@ func spawn_note(beat_number: int):
 			)
 	)
 	get_tree().current_scene.add_child(note)
-	visibleNotes.append(note)
+	
+	prevSpawnPoint = position
 
 # Keep your other functions unchanged
 func register_hit(accuracy: String = "perfect"):
