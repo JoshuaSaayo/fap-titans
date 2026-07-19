@@ -4,10 +4,10 @@
 [ext_resource type="Script" uid="uid://o03qqeuo1pj" path="res://main_scenes/main.gd" id="1_xxyhp"]
 [ext_resource type="PackedScene" uid="uid://dj2utacqq6dp7" path="res://main_scenes/player.tscn" id="2_8e5s8"]
 [ext_resource type="Texture2D" uid="uid://dpvsbifem2fgb" path="res://assets/main_backgrond.png" id="2_yp5qj"]
+[ext_resource type="AudioStream" uid="uid://cs07eucw2ccxr" path="res://UI/audio/grand_project-fear-and-fire-367699.mp3" id="6_01u8o"]
 [ext_resource type="Texture2D" uid="uid://bhkhijtmicbce" path="res://assets/main_foregrond.png" id="6_46m03"]
 [ext_resource type="Texture2D" uid="uid://8se1wandot" path="res://UI/assets/close.png" id="6_rn820"]
 [ext_resource type="Texture2D" uid="uid://34vp1ex7ngvh" path="res://UI/assets/close_hover.png" id="7_01u8o"]
-[ext_resource type="AudioStream" uid="uid://cu24c5821rkle" path="res://UI/audio/646460__g-14__medieval-march-mp3.mp3" id="8_rn820"]
 [ext_resource type="PackedScene" uid="uid://bokx50577ie6u" path="res://UI/toy_debug_view.tscn" id="9_01u8o"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_y6ta4"]
@@ -45,7 +45,7 @@ texture = ExtResource("6_46m03")
 position = Vector2(740, 384)
 
 [node name="MainBG" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("8_rn820")
+stream = ExtResource("6_01u8o")
 autoplay = true
 bus = &"Music"
 

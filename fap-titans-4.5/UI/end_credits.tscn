@@ -7,14 +7,14 @@
 
 [sub_resource type="LabelSettings" id="LabelSettings_41ndo"]
 font = ExtResource("2_mqmpb")
-font_size = 60
+font_size = 40
 font_color = Color(0.9098039, 0.7764706, 0.4392157, 1)
 shadow_size = 2
 shadow_color = Color(0, 0, 0, 1)
 
 [sub_resource type="LabelSettings" id="LabelSettings_8tab6"]
 font = ExtResource("3_wv3s7")
-font_size = 40
+font_size = 25
 font_color = Color(0.9098039, 0.7764706, 0.4392157, 1)
 shadow_size = 2
 shadow_color = Color(0, 0, 0, 1)
@@ -108,9 +108,9 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = 828.0
-offset_top = 91.0
+offset_top = 68.0
 offset_right = 1209.0
-offset_bottom = 198.0
+offset_bottom = 175.0
 grow_horizontal = 2
 grow_vertical = 2
 text = "Fleurdelis the Witch
@@ -124,9 +124,9 @@ anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
 offset_left = 696.0
-offset_top = 239.0
+offset_top = 193.0
 offset_right = 1208.0
-offset_bottom = 318.0
+offset_bottom = 272.0
 grow_horizontal = 2
 text = "SOUND RESOURCES"
 label_settings = SubResource("LabelSettings_41ndo")
@@ -140,9 +140,9 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = 23.0
-offset_top = 321.0
+offset_top = 231.0
 offset_right = 1209.0
-offset_bottom = 703.0
+offset_bottom = 613.0
 grow_horizontal = 2
 grow_vertical = 2
 text = "-Realm of Adventure by waxsocks -- https://freesound.org/s/683938/ 
@@ -155,7 +155,39 @@ text = "-Realm of Adventure by waxsocks -- https://freesound.org/s/683938/
 label_settings = SubResource("LabelSettings_8tab6")
 horizontal_alignment = 2
 
+[node name="CreditsLabel3" type="Label" parent="SoundResources"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = 645.0
+offset_top = 474.0
+offset_right = 1206.0
+offset_bottom = 553.0
+grow_horizontal = 2
+text = "GSPOT REPOSITORY RESOURCES"
+label_settings = SubResource("LabelSettings_41ndo")
+horizontal_alignment = 2
+
+[node name="SoundLabel3" type="Label" parent="SoundResources"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 765.5
+offset_top = 509.0
+offset_right = 1205.5
+offset_bottom = 616.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "https://github.com/deadpixelsociety/gspot"
+label_settings = SubResource("LabelSettings_8tab6")
+horizontal_alignment = 2
+
 [node name="FadeRect" type="ColorRect" parent="."]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
