@@ -96,7 +96,9 @@ func end_dialogue():
 		return
 
 	scene_changed = true
-
+	
+	main_bg.stop()
+	
 	print("✅ Outro finished → Loading Lewd Scene in 1 second...")
 
 	await get_tree().create_timer(1.2).timeout
