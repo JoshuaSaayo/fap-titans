@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://bksi846xp8iep"]
+[gd_scene load_steps=19 format=3 uid="uid://bksi846xp8iep"]
 
 [ext_resource type="PackedScene" uid="uid://81bu0rcynjp" path="res://main_scenes/monster.tscn" id="1_5wi6k"]
 [ext_resource type="Script" uid="uid://o03qqeuo1pj" path="res://main_scenes/main.gd" id="1_xxyhp"]
@@ -9,6 +9,8 @@
 [ext_resource type="Texture2D" uid="uid://8se1wandot" path="res://UI/assets/close.png" id="6_rn820"]
 [ext_resource type="Texture2D" uid="uid://34vp1ex7ngvh" path="res://UI/assets/close_hover.png" id="7_01u8o"]
 [ext_resource type="PackedScene" uid="uid://bokx50577ie6u" path="res://UI/toy_debug_view.tscn" id="9_01u8o"]
+[ext_resource type="Texture2D" uid="uid://28v2wk37je3v" path="res://UI/assets/dialogue_box.png" id="10_7fymn"]
+[ext_resource type="FontFile" uid="uid://d2564b14oyd1a" path="res://UI/fonts/IMFellEnglish-Regular.ttf" id="11_w5xqx"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_y6ta4"]
 texture = ExtResource("6_rn820")
@@ -24,6 +26,14 @@ texture = ExtResource("6_rn820")
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_6f1vi"]
 texture = ExtResource("6_rn820")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_8qara"]
+texture = ExtResource("10_7fymn")
+
+[sub_resource type="LabelSettings" id="LabelSettings_akg2s"]
+font = ExtResource("11_w5xqx")
+font_size = 25
+font_color = Color(0.9098039, 0.7764706, 0.4392157, 1)
 
 [node name="main" type="Node2D"]
 script = ExtResource("1_xxyhp")
@@ -75,5 +85,24 @@ grow_horizontal = 1
 grow_vertical = 1
 size_flags_horizontal = 0
 size_flags_vertical = 0
+
+[node name="dialogue_box" type="Panel" parent="."]
+offset_left = 280.0
+offset_top = 10.0
+offset_right = 1030.0
+offset_bottom = 200.0
+theme_override_styles/panel = SubResource("StyleBoxTexture_8qara")
+
+[node name="DialogueLabel" type="Label" parent="dialogue_box"]
+layout_mode = 0
+offset_left = 21.0
+offset_top = 26.0
+offset_right = 667.0
+offset_bottom = 131.0
+text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do 
+eiusmod tempor incididunt ut labore et dolore magna 
+aliqua. Ut enim ad minim veniam,"
+label_settings = SubResource("LabelSettings_akg2s")
+autowrap_mode = 2
 
 [connection signal="pressed" from="UILayer/PauseBtn" to="." method="_on_pause_btn_pressed"]

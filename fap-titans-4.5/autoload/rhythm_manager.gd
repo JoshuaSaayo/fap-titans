@@ -11,6 +11,7 @@ var game_time: float = 0.0
 @export var min_spawn_width: float = 300.0   # Early game - notes close together
 @export var max_spawn_width: float = 900.0   # Late game - notes very spread out
 
+
 signal note_hit(accuracy: String)
 signal note_missed
 
