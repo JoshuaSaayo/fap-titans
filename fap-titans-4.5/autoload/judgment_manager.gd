@@ -5,9 +5,9 @@ extends Node
 
 func _input(event):
 	if event is InputEventScreenTouch and event.pressed:
-		attempt_hit(event.position)
+		pass#attempt_hit(event.position)
 	elif event is InputEventMouseButton and event.pressed and event.button_index == MOUSE_BUTTON_LEFT:
-		attempt_hit(event.position)
+		pass#attempt_hit(event.position)
 
 func attempt_hit(touch_pos):
 	var notes = get_tree().get_nodes_in_group("notes")

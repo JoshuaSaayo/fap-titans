@@ -1,7 +1,8 @@
 extends Node2D
 
-@export var max_hp: float = 250.0
-var current_hp: float = 250.0
+# 32 / 4 + 64 / 2 + 32 * 3 / 4 + 96 = 160 - number of all notes to spawn during music
+@export var max_hp: float = 160.0
+var current_hp: float = 160.0
 
 @onready var spine: SpineSprite = $MinervaSpine
 @onready var hp_bar = $ProgressBar
@@ -20,7 +21,7 @@ func play_idle_animation():
 	spine.get_animation_state().set_animation("animation", true, 0)
 
 func take_damage(amount: float):
-	current_hp = clamp(current_hp - amount, 0, max_hp)
+	current_hp = clamp(current_hp - 1.1, 0, max_hp)
 	update_hp_ui()
 	check_and_change_phase()
 

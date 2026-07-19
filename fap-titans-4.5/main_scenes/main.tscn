@@ -4,7 +4,7 @@
 [ext_resource type="Script" uid="uid://o03qqeuo1pj" path="res://main_scenes/main.gd" id="1_xxyhp"]
 [ext_resource type="PackedScene" uid="uid://dj2utacqq6dp7" path="res://main_scenes/player.tscn" id="2_8e5s8"]
 [ext_resource type="Texture2D" uid="uid://dpvsbifem2fgb" path="res://assets/main_backgrond.png" id="2_yp5qj"]
-[ext_resource type="AudioStream" uid="uid://cs07eucw2ccxr" path="res://UI/audio/grand_project-fear-and-fire-367699.mp3" id="6_01u8o"]
+[ext_resource type="AudioStream" uid="uid://cl1pt633ebvyb" path="res://UI/audio/fear-and-fire-edit.mp3" id="6_7fymn"]
 [ext_resource type="Texture2D" uid="uid://bhkhijtmicbce" path="res://assets/main_foregrond.png" id="6_46m03"]
 [ext_resource type="Texture2D" uid="uid://8se1wandot" path="res://UI/assets/close.png" id="6_rn820"]
 [ext_resource type="Texture2D" uid="uid://34vp1ex7ngvh" path="res://UI/assets/close_hover.png" id="7_01u8o"]
@@ -55,7 +55,7 @@ texture = ExtResource("6_46m03")
 position = Vector2(740, 384)
 
 [node name="MainBG" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("6_01u8o")
+stream = ExtResource("6_7fymn")
 bus = &"Music"
 
 [node name="dialogue_box" type="Panel" parent="."]
