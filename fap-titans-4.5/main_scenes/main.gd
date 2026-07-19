@@ -133,6 +133,7 @@ func _on_pause_btn_pressed() -> void:
 		return
 	
 	PauseManager.toggle_pause()
+
 	
 	var pause_menu = load("res://UI/pause_menu.tscn").instantiate()
 	$UILayer.add_child(pause_menu)   # ← Add to CanvasLayer instead
