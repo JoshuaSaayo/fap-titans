@@ -12,11 +12,14 @@ extends Control
 @onready var message_overlay = %MessageOverlay
 @onready var message_label = %MessageLabel
 @onready var test_button = %TestButton
+@onready var request_button = %RequestButton
+@onready var scan_button = %ScanButton
 
 var disposeBag: ToysManager.DisposeBag
 var isConnecting: bool = false
 var isRequestingDeviceList: bool = false
 var isTesting: bool = false
+var isScanning: bool = false
 
 signal onClosePress
 
@@ -40,6 +43,12 @@ func _ready():
 	ToysManager.isTesting.listen(
 		func (isToyManagerTesting: bool):
 			isTesting = isToyManagerTesting
+			update_loading_overlay()
+	).addTo(disposeBag)
+	
+	ToysManager.isScanning.listen(
+		func (isToyManagerScanning: bool):
+			isScanning = isToyManagerScanning
 			update_loading_overlay()
 	).addTo(disposeBag)
 	
@@ -97,6 +106,9 @@ func update_loading_overlay():
 	elif (isTesting):
 		loading_overlay_label.text = "Sending vibes..."
 		loading_overlay.visible = true
+	elif (isScanning):
+		loading_overlay_label.text = "Scanning..."
+		loading_overlay.visible = true
 	else:
 		loading_overlay.visible = false
 
@@ -131,6 +143,14 @@ func on_test_press():
 	var selectedIndices: PackedInt32Array = linked_devices_list.get_selected_items()
 	for index in selectedIndices:
 		ToysManager.test_device(ToysManager.linkedDevices.get_value()[index])
+
+func on_request_press():
+	request_button.release_focus()
+	ToysManager.request_device_list()
+
+func on_scan_press():
+	scan_button.release_focus()
+	ToysManager.scan()
 
 func on_close_press():
 	onClosePress.emit()

@@ -63,6 +63,7 @@ class LinkedDevice:
 var isConnecting: BehaviourSubject
 var isRequestingDeviceList: BehaviourSubject
 var isTesting: BehaviourSubject
+var isScanning: BehaviourSubject
 var connectedServer: BehaviourSubject
 var connectedDevices: BehaviourSubject
 var linkedDevices: BehaviourSubject
@@ -81,6 +82,8 @@ var peak_combo2 = 0
 var prev_combo_level: int = 0
 var is_lewd: bool = false
 var is_climaxing: bool = false
+var prev_level = 0
+var prev_level_time = 0
 
 signal showError(message: String)
 
@@ -88,6 +91,7 @@ func _init():
 	isConnecting = BehaviourSubject.new(false)
 	isRequestingDeviceList = BehaviourSubject.new(false)
 	isTesting = BehaviourSubject.new(false)
+	isScanning = BehaviourSubject.new(false)
 	connectedServer = BehaviourSubject.new(null)
 	connectedDevices = BehaviourSubject.new([] as Array[GSDevice])
 	linkedDevices = BehaviourSubject.new([] as Array[LinkedDevice])
@@ -106,6 +110,21 @@ func _ready():
 				connectedDevices.setValue([] as Array[GSDevice])
 				linkedDevices.setValue([] as Array[LinkedDevice])
 	)
+	
+	vibrationLevel.listen(update_vibartion)
+
+func update_vibartion(level: float):
+	
+	if (abs(prev_level - level) < 0.01):
+		return
+	
+	var new_time = Time.get_unix_time_from_system()
+	if (time - prev_level_time > 0.008):
+		return
+
+	set_all_vibration_level(level)
+	prev_level = level
+	prev_level_time = new_time
 
 func connect_server(host: String, port: int):
 	isConnecting.setValue(true)
@@ -154,6 +173,20 @@ func request_device_list():
 	GSClient.request_device_list()
 	await get_tree().create_timer(3.0).timeout
 	devices_labda.call(null)
+	
+func scan():
+	isScanning.setValue(true)
+
+	await get_tree().create_timer(0.5).timeout
+
+	GSClient.scan_start()
+	
+	await get_tree().create_timer(3).timeout
+	
+	GSClient.scan_stop()
+	isScanning.setValue(false)
+	
+	request_device_list()
 
 func on_server_error():
 	showError.emit("Server error")
@@ -215,7 +248,6 @@ func _process(delta: float) -> void:
 		time += delta
 		var level = 0.7 + 0.3 * (sin(time * PI * 2.6) + 1) / 2
 		vibrationLevel.setValue(level)
-		set_all_vibration_level(level)
 		return
 	
 	if (abs(base_level - target_base_level) > 0.01):
@@ -241,7 +273,6 @@ func reset():
 	is_climaxing = false
 	time = 0
 	vibrationLevel.setValue(0)
-	set_all_vibration_level(0)
 
 func update_for_music(position: float, beatDelta: float, combo: int):
 	var tick1Delta = beatDelta * 4
@@ -283,7 +314,6 @@ func update_for_music(position: float, beatDelta: float, combo: int):
 	
 	var clampedLevel = clamp(level, 0, 1)
 	vibrationLevel.setValue(clampedLevel)
-	set_all_vibration_level(clampedLevel)
 
 	prev_combo_level = combo
 
@@ -295,4 +325,3 @@ func start_climax():
 	is_lewd = false
 	is_climaxing = true
 	vibrationLevel.setValue(1)
-	set_all_vibration_level(1)
