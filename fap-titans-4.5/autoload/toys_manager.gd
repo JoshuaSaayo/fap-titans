@@ -193,11 +193,39 @@ func set_all_vibration_level(level: float):
 	for device: GSDevice in devicesToCommand:
 		device.vibrate(level)
 
-func _process(delta: float) -> void:
-	time += delta * PI * 2
-	if (time > PI * 2):
-		time -= PI * 2
+#func _process(delta: float) -> void:
+	#time += delta * PI * 2
+	#if (time > PI * 2):
+		#time -= PI * 2
+#
+	#var level = (sin(time) + 1) / 2
+	#vibrationLevel.setValue(level)
+	#set_all_vibration_level(level)
 
-	var level = (sin(time) + 1) / 2
-	vibrationLevel.setValue(level)
-	set_all_vibration_level(level)
+func update_for_music(position: float, beatDelta: float, combo: int):
+	var tick1Delta = beatDelta * 4
+	var closestBeat = int(round(position / tick1Delta))
+	var delta = position - closestBeat * tick1Delta
+	var minDelta = 0.2
+	var level = 0.0;
+	var baseLevel = clamp(0.1 * (combo - 4), 0, 0.5)
+	
+	var tick3Position = position + beatDelta * 2
+	var closestBeat3 = int(round(tick3Position / tick1Delta))
+	var delta3 = tick3Position - closestBeat3 * tick1Delta
+	
+	if (position < -minDelta):
+		level = 0
+	else:
+		if (abs(delta) <= minDelta):
+			var progression = 1 - abs(delta / minDelta)
+			level = baseLevel + progression * (0.1 * clamp(combo + 1, 0, 5))
+		elif (abs(delta3) <= minDelta):
+			var progression = 1 - abs(delta3 / minDelta)
+			level = baseLevel + progression * (0.1 * clamp(combo - 9, 0, 5))
+		else:
+			level = baseLevel
+	
+	var clampedLevel = clamp(level, 0, 1)
+	vibrationLevel.setValue(clampedLevel)
+	set_all_vibration_level(clampedLevel)

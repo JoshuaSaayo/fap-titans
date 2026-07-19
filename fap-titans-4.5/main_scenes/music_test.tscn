@@ -1,15 +1,16 @@
-[gd_scene load_steps=3 format=3 uid="uid://0y8iwpi5q72a"]
+[gd_scene load_steps=4 format=3 uid="uid://0y8iwpi5q72a"]
 
 [ext_resource type="Script" uid="uid://w8tmnfdsp3g6" path="res://main_scenes/music_test.gd" id="1_1xdap"]
 [ext_resource type="AudioStream" uid="uid://cl1pt633ebvyb" path="res://UI/audio/fear-and-fire-edit.mp3" id="2_1xdap"]
+[ext_resource type="PackedScene" uid="uid://bokx50577ie6u" path="res://UI/toy_debug_view.tscn" id="3_n6rhl"]
 
 [node name="MusicTest" type="Node2D"]
 script = ExtResource("1_1xdap")
 
 [node name="Button" type="Button" parent="."]
-offset_left = 90.0
+offset_left = 50.0
 offset_top = 113.0
-offset_right = 136.0
+offset_right = 96.0
 offset_bottom = 144.0
 text = "Start"
 
@@ -17,4 +18,32 @@ text = "Start"
 unique_name_in_owner = true
 stream = ExtResource("2_1xdap")
 
+[node name="ToyDebugView" parent="." instance=ExtResource("3_n6rhl")]
+custom_minimum_size = Vector2(200, 100)
+anchors_preset = 1
+anchor_left = 1.0
+anchor_bottom = 0.0
+offset_right = 200.0
+offset_bottom = 100.0
+grow_horizontal = 0
+grow_vertical = 1
+size_flags_horizontal = 8
+size_flags_vertical = 0
+
+[node name="Button2" type="Button" parent="."]
+offset_left = 39.0
+offset_top = 154.0
+offset_right = 112.0
+offset_bottom = 185.0
+text = "+Combo"
+
+[node name="Button3" type="Button" parent="."]
+offset_left = 23.0
+offset_top = 199.0
+offset_right = 127.0
+offset_bottom = 230.0
+text = "Drop combo"
+
 [connection signal="pressed" from="Button" to="." method="on_start_press"]
+[connection signal="pressed" from="Button2" to="." method="on_add_combo_press"]
+[connection signal="pressed" from="Button3" to="." method="on_drop_combo_press"]

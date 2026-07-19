@@ -7,6 +7,7 @@ var bpm = 160.0
 var beatDelta = 60.0 / bpm
 var noteLifetime = 0.5
 var prevBeatNumber = -1
+var combo = 0
 
 var stage1From = 0
 var stage1To = 31
@@ -20,6 +21,9 @@ var stage4To = 223
 func _process(delta: float) -> void:
 	var music_position = player.get_playback_position()
 	var beatPosition = music_position - firstBeatPosition
+	
+	ToysManager.update_for_music(beatPosition, beatDelta, combo)
+	
 	var beatSpawnPosition = beatPosition + noteLifetime
 	var beatNumber = int(floor(beatSpawnPosition / beatDelta))
 	if (beatNumber != prevBeatNumber && beatNumber >= 0):
@@ -59,3 +63,9 @@ func spawn_note(beat: int):
 	note.position = Vector2(200 + 100 * (beat % 4), 200)
 	note.lifetime = noteLifetime
 	get_tree().current_scene.add_child(note)
+
+func on_add_combo_press():
+	combo += 1
+
+func on_drop_combo_press():
+	combo = 0
